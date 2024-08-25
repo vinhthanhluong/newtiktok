@@ -5,10 +5,11 @@ import Header from '~/layouts/components/Header';
 
 function HeaderOnly({ children }) {
     return (
-        <div className="wrapper">
+        <div className={clsx(styles.wrapper)}>
             <Header />
-            <main className="main">
-                <div className="content"> {children}</div>
+            {/* noneSidebar */}
+            <main className={clsx(styles.main)}>
+                <div className={clsx(styles.content)}> {children}</div>
             </main>
         </div>
     );

@@ -6,11 +6,11 @@ import Sidebar from '~/layouts/components/Sidebar';
 
 function DefaultLayout({ children }) {
     return (
-        <div className="wrapper">
+        <div className={clsx(styles.wrapper)}>
             <Header />
-            <main className="main">
+            <main className={clsx(styles.main)}>
                 <Sidebar />
-                <div className="content">{children}</div>
+                <div className={clsx(styles.content)}>{children}</div>
             </main>
         </div>
     );

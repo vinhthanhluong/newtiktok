@@ -3,7 +3,11 @@ import clsx from 'clsx';
 import styles from './Search.module.scss';
 
 function Search() {
-    return <h2>Search</h2>;
+    return (
+        <div className={clsx(styles.search)}>
+            <span>search2</span>
+        </div>
+    );
 }
 
 export default Search;

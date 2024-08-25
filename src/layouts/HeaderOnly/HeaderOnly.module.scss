@@ -1,0 +1,13 @@
+.wrapper {
+}
+.main {
+}
+
+.content {
+    max-width: 100%;
+    width: var(--container);
+    margin: 0 auto;
+    padding: 30px var(--px);
+    background-color: wheat;
+    height: 500px;
+}
