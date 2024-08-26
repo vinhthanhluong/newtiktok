@@ -11,12 +11,15 @@
 .container {
     display: flex;
     justify-content: space-between;
-    padding: 15px;
+    padding: 7px 15px;
     height: 100%;
 }
 .logo {
     a {
-        display: block;
+        display: flex;
+        align-items: center;
+        height: 100%;
         line-height: 1;
+        transform: translateY(5px);
     }
 }

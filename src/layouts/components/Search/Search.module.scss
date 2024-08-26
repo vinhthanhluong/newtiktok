@@ -1,0 +1,87 @@
+.wrapper {
+    position: relative;
+    max-width: 100%;
+    width: 500px;
+    height: 46px;
+    border-radius: 100px;
+    overflow: hidden;
+}
+.ipt {
+    width: 100%;
+    height: 100%;
+    padding: 12px 100px 12px 20px;
+    background: rgba(22, 24, 35, 0.06);
+    border-radius: 100px;
+    border: 1px solid transparent;
+    font-size: 100%;
+    caret-color: var(--primary);
+    transition: all 0.3s ease;
+    &:hover {
+        border-color: #ccc;
+        & ~ .btn {
+            color: var(--body-color);
+        }
+    }
+    &:focus {
+        border-color: #ccc;
+        & ~ .btn {
+            color: var(--body-color);
+        }
+    }
+}
+.clearn {
+    position: absolute;
+    right: 53px;
+    top: 1px;
+    bottom: 1px;
+    margin: auto 0;
+    width: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgba(22, 24, 35, 0.34);
+    font-size: 100%;
+    &:hover {
+        color: var(--body-color);
+    }
+}
+.loading {
+    position: absolute;
+    right: 53px;
+    top: 1px;
+    bottom: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    font-size: 100%;
+    display: none;
+}
+.btn {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    width: 52px;
+    background-color: transparent;
+    cursor: pointer;
+    color: #a7a7ab;
+    font-size: 20px;
+    padding-top: 2px;
+    border-radius: 0 100px 100px 0;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        bottom: 8px;
+        left: -1px;
+        width: 1px;
+        background-color: rgba(22, 24, 35, 0.12);
+    }
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.06);
+        color: var(--body-color);
+    }
+}

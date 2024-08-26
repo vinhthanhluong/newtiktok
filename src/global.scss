@@ -74,6 +74,12 @@ p {
 li {
     list-style-type: none;
 }
+
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
 // =======================================
 .wrapper {
     margin: 0 auto;
