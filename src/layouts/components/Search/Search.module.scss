@@ -5,6 +5,11 @@
     height: 46px;
     border-radius: 100px;
     overflow: hidden;
+    &:hover {
+        .ipt {
+            border-color: #ccc;
+        }
+    }
 }
 .ipt {
     width: 100%;
@@ -17,7 +22,6 @@
     caret-color: var(--primary);
     transition: all 0.3s ease;
     &:hover {
-        border-color: #ccc;
         & ~ .btn {
             color: var(--body-color);
         }
@@ -84,4 +88,16 @@
         background-color: rgba(22, 24, 35, 0.06);
         color: var(--body-color);
     }
+}
+
+// Search Results
+.searchResult {
+    max-width: 100%;
+    width: 500px;
+}
+.searchTitle {
+    color: #a7a7ab;
+    font-weight: 500;
+    padding: 0 12px;
+    margin-bottom: 8px;
 }

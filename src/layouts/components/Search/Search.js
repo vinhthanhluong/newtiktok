@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faSpinner, faXmark } from '@fortawesome/free-solid-svg-icons';
@@ -6,16 +7,31 @@ import 'tippy.js/dist/tippy.css';
 
 import styles from './Search.module.scss';
 import images from '~/assets/images';
+import { PopperWrapper } from '~/components/Popper';
+import AccountSearch from '~/layouts/components/AccountSearch';
 
 function Search() {
+    const [searchResults, showSearchResults] = useState([]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            // showSearchResults([1, 2, 3]);
+        }, 0);
+    }, []);
+
     return (
         <TippyHeadless
-            visible
+            visible={searchResults.length > 0}
             interactive={true}
             placement="bottom"
             render={(attrs) => (
                 <div className={clsx(styles.searchResult)} tabIndex="-1" {...attrs}>
-                    My tippy box
+                    <PopperWrapper>
+                        <p className={clsx(styles.searchTitle)}>Accounts</p>
+                        <AccountSearch />
+                        <AccountSearch />
+                        <AccountSearch />
+                    </PopperWrapper>
                 </div>
             )}
         >
