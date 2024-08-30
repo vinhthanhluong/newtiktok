@@ -1,5 +1,7 @@
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisVertical, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
@@ -18,8 +20,12 @@ function Header() {
                 </div>
                 <Search />
                 <div className={clsx(styles.action)}>
-                    <Button />
-                    <div className="icDot"></div>
+                    <Button to={config.router.login} primary iconLeft={<FontAwesomeIcon icon={faRightToBracket} />}>
+                        Log in
+                    </Button>
+                    <div className={clsx(styles.icDot)}>
+                        <FontAwesomeIcon icon={faEllipsisVertical} />
+                    </div>
                 </div>
             </div>
         </header>

@@ -4,6 +4,7 @@ import Home from '~/pages/Home';
 import Following from '~/pages/Following';
 import Profile from '~/pages/Profile';
 import Upload from '~/pages/Upload';
+import Login from '~/pages/Login';
 import HeaderOnly from '~/layouts/HeaderOnly';
 
 const publicRoutes = [
@@ -11,6 +12,7 @@ const publicRoutes = [
     { path: config.router.following, component: Following },
     { path: config.router.profile, component: Profile, layout: HeaderOnly },
     { path: config.router.upload, component: Upload, layout: null },
+    { path: config.router.login, component: Login, layout: HeaderOnly },
 ];
 
 const privateRoutes = [];

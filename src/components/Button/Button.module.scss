@@ -6,14 +6,30 @@
     width: 100px;
     min-height: 36px;
     padding: 9px 8px 8px;
-    background-color: var(--primary);
     color: #fff;
     font-size: 16px;
     font-weight: 700;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+
     &:hover {
         opacity: 0.7;
+    }
+
+    &.primary {
+        background-color: var(--primary);
+    }
+    &.default {
+        background-color: #cfcfcf;
+        pointer-events: none;
+        cursor: no-drop;
+    }
+
+    .icLeft {
+        margin-right: 6px;
+    }
+    .icRight {
+        margin-left: 6px;
     }
 }
