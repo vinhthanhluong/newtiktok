@@ -9,7 +9,8 @@ function Button({
     className,
     children,
     primary = false,
-    nDefault = false,
+    disable = false,
+    outline = false,
     iconLeft,
     iconRight,
     onClick,
@@ -17,7 +18,8 @@ function Button({
 }) {
     const classButton = clsx(styles.btn, {
         [styles.primary]: primary,
-        [styles.default]: nDefault,
+        [styles.disable]: disable,
+        [styles.outline]: outline,
         [className]: className,
     });
     // Change btn style

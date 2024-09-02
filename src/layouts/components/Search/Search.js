@@ -6,7 +6,6 @@ import TippyHeadless from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 
 import styles from './Search.module.scss';
-import images from '~/assets/images';
 import { PopperWrapper } from '~/components/Popper';
 import AccountSearch from '~/layouts/components/AccountSearch';
 

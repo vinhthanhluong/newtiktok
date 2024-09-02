@@ -12,6 +12,14 @@
     --body-color: #161823;
     --container: 1230px;
     --px: 15px;
+    --shadow: rgba(0, 0, 0, 0.16);
+}
+
+.dark-theme {
+    --w-cl: #121212;
+    --b-cl: #fff;
+    --body-color: rgba(255, 255, 255, 0.9);
+    --shadow: rgba(255, 255, 255, 0.16);
 }
 
 *,
@@ -45,6 +53,7 @@ body {
     font-size: 1.6rem;
     line-height: var(--lh);
     color: var(--body-color);
+    background-color: var(--w-cl);
 }
 
 [tabindex],

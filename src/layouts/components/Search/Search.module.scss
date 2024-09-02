@@ -42,7 +42,9 @@
     width: 40px;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: rgba(22, 24, 35, 0.34);
+    background-color: transparent;
+    color: var(--body-color);
+    opacity: 0.34;
     font-size: 100%;
     &:hover {
         color: var(--body-color);
