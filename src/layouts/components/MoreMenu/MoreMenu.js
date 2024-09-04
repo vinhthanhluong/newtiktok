@@ -20,12 +20,11 @@ function MoreMenu({ children, items = [], onChange, activeTheme }) {
                 <MoreMenuItem
                     key={index}
                     data={item}
-                    onClick={(e) => {
+                    onClick={() => {
                         const isChildren = !!item.children;
                         const isTo = !!item.to;
                         if (isChildren) {
                             setHistory((prev) => [...prev, item.children]);
-                        } else {
                         }
                         if (!isTo) {
                             onChange(item);
@@ -48,6 +47,7 @@ function MoreMenu({ children, items = [], onChange, activeTheme }) {
     return (
         <TippyHeadless
             // visible
+            delay={[0, 800]}
             onHide={() => (history.length > 1 ? HandleBack() : '')}
             interactive={true}
             placement="bottom-end"

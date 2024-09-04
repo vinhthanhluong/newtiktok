@@ -11,8 +11,6 @@ function MoreMenuItem({ data, onClick, active }) {
         Comp = Link;
     }
 
-    console.log(active);
-
     return (
         <li>
             <Comp to={data.to} className={clsx(styles.MoreBtn, { [styles.active]: active })} onClick={onClick}>
