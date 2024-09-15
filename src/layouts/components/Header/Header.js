@@ -18,6 +18,8 @@ import Search from '~/layouts/components/Search';
 import Button from '~/components/Button';
 import config from '~/config';
 import MoreMenu from '~/layouts/components/MoreMenu';
+import Image from '~/components/Image';
+import { UploadIcon, MessageIcon, InboxIcon, Logo } from '~/assets/icon';
 
 function Header() {
     // User
@@ -47,7 +49,7 @@ function Header() {
             <div className={clsx(styles.container)}>
                 <div className={clsx(styles.logo)}>
                     <Link to={config.router.home}>
-                        <img src={images.logo} alt="Logo" />
+                        <Logo width="118" height="42" />
                     </Link>
                 </div>
                 <Search />
@@ -56,17 +58,17 @@ function Header() {
                         <>
                             <Tippy delay={[0, 200]} content="Upload" placement="bottom">
                                 <div className={clsx(styles.userCloud, styles.userIcon)}>
-                                    <FontAwesomeIcon icon={faCloudArrowUp} />
+                                    <UploadIcon />
                                 </div>
                             </Tippy>
                             <Tippy delay={[0, 200]} content="Send" placement="bottom">
                                 <div className={clsx(styles.userPlane, styles.userIcon)}>
-                                    <FontAwesomeIcon icon={faPaperPlane} />
+                                    <MessageIcon />
                                 </div>
                             </Tippy>
                             <Tippy delay={[0, 200]} content="Message" placement="bottom">
                                 <div className={clsx(styles.userMessage, styles.userIcon)}>
-                                    <FontAwesomeIcon icon={faMessage} />
+                                    <InboxIcon />
                                     <span>99+</span>
                                 </div>
                             </Tippy>
@@ -98,7 +100,7 @@ function Header() {
                     >
                         {CurrentUser ? (
                             <div className={clsx(styles.userAvatar)}>
-                                <img src={images.noImg} alt="avatar" />
+                                <Image src="https://fullstack.edu.vn/assets/f8-icon-lV2rGpF0.png" alt="avatar" />
                             </div>
                         ) : (
                             <div className={clsx(styles.btnMore)}>
