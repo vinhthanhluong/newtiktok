@@ -9,6 +9,10 @@
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 10px var(--shadow);
+    ul {
+        max-height: calc(100vh - 300px);
+        overflow-y: auto;
+    }
 }
 
 // MoreMenuItem

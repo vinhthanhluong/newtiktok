@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -21,3 +22,7 @@ function AccountSearch({ data }) {
 }
 
 export default AccountSearch;
+
+AccountSearch.propTypes = {
+    data: PropTypes.object.isRequired,
+};

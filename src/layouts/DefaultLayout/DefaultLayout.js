@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 
 import styles from './DefaultLayout.module.scss';
 import Header from '~/layouts/components/Header';
@@ -17,3 +18,7 @@ function DefaultLayout({ children }) {
 }
 
 export default DefaultLayout;
+
+DefaultLayout.propTypes = {
+    children: PropTypes.node.isRequired,
+};

@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import TippyHeadless from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -50,13 +51,14 @@ function MoreMenu({ children, items = [], onChange, activeTheme }) {
             delay={[0, 800]}
             onHide={() => (history.length > 1 ? HandleBack() : '')}
             interactive={true}
+            hideOnClick={false}
             placement="bottom-end"
             render={(attrs) => (
                 <div className={clsx(styles.content)} tabIndex="-1" {...attrs}>
-                    <ul className={clsx(styles.wrapper)}>
+                    <div className={clsx(styles.wrapper)}>
                         {history.length > 1 && <MoreLabel title={currentMenu.title} onBack={() => HandleBack()} />}
-                        {renderItems()}
-                    </ul>
+                        <ul>{renderItems()}</ul>
+                    </div>
                 </div>
             )}
         >
@@ -66,3 +68,10 @@ function MoreMenu({ children, items = [], onChange, activeTheme }) {
 }
 
 export default MoreMenu;
+
+MoreMenu.propTypes = {
+    children: PropTypes.node,
+    items: PropTypes.array,
+    onChange: PropTypes.func,
+    activeTheme: PropTypes.string,
+};

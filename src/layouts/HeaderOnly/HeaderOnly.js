@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 
 import styles from './HeaderOnly.module.scss';
 import Header from '~/layouts/components/Header';
@@ -16,3 +17,7 @@ function HeaderOnly({ children }) {
 }
 
 export default HeaderOnly;
+
+HeaderOnly.propTypes = {
+    children: PropTypes.node.isRequired,
+};

@@ -42,46 +42,57 @@ function Search() {
         inputRef.current.focus();
     };
 
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
+
     return (
-        <TippyHeadless
-            visible={showResult && searchResults.length > 0}
-            interactive={true}
-            placement="bottom"
-            render={(attrs) => (
-                <div className={clsx(styles.searchResult)} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        <p className={clsx(styles.searchTitle)}>Accounts</p>
-                        {searchResults.map((item) => (
-                            <AccountSearch key={item.id} data={item} />
-                        ))}
-                    </PopperWrapper>
-                </div>
-            )}
-        >
-            <div className={clsx(styles.wrapper)}>
-                <input
-                    ref={inputRef}
-                    value={searchValue}
-                    type="text"
-                    placeholder="Search..."
-                    className={clsx(styles.ipt)}
-                    onChange={(e) => setSearchValue(e.target.value)}
-                />
-                {searchValue && !loading && (
-                    <button className={clsx(styles.clear)} onClick={handleClear}>
-                        <FontAwesomeIcon icon={faXmark} />
+        // Using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context.
+        <div>
+            <TippyHeadless
+                visible={showResult && searchResults.length > 0}
+                interactive={true}
+                placement="bottom"
+                render={(attrs) => (
+                    <div className={clsx(styles.searchResult)} tabIndex="-1" {...attrs}>
+                        <PopperWrapper>
+                            <p className={clsx(styles.searchTitle)}>Accounts</p>
+                            {searchResults.map((item) => (
+                                <AccountSearch key={item.id} data={item} />
+                            ))}
+                        </PopperWrapper>
+                    </div>
+                )}
+            >
+                <div className={clsx(styles.wrapper)}>
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        type="text"
+                        placeholder="Search..."
+                        className={clsx(styles.ipt)}
+                        onChange={handleChange}
+                    />
+                    {searchValue && !loading && (
+                        <button className={clsx(styles.clear)} onClick={handleClear}>
+                            <FontAwesomeIcon icon={faXmark} />
+                        </button>
+                    )}
+                    {loading && (
+                        <span className={clsx(styles.loading)}>
+                            <FontAwesomeIcon icon={faSpinner} />
+                        </span>
+                    )}
+                    <button className={clsx(styles.btn)}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
-                )}
-                {loading && (
-                    <span className={clsx(styles.loading)}>
-                        <FontAwesomeIcon icon={faSpinner} />
-                    </span>
-                )}
-                <button className={clsx(styles.btn)}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
-            </div>
-        </TippyHeadless>
+                </div>
+            </TippyHeadless>
+        </div>
     );
 }
 

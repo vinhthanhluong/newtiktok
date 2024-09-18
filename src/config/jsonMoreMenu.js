@@ -24,6 +24,74 @@ const MENU_MORES = [
                     code: 'cn',
                     title: 'Chinese',
                 },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    code: 'cn',
+                    title: 'Chinese',
+                },
             ],
         },
     },

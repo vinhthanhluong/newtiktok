@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import styles from './MoreMenu.module.scss';
@@ -22,3 +23,9 @@ function MoreMenuItem({ data, onClick, active }) {
 }
 
 export default memo(MoreMenuItem);
+
+MoreMenuItem.propTypes = {
+    data: PropTypes.object,
+    onClick: PropTypes.func,
+    active: PropTypes.bool,
+};
