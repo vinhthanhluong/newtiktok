@@ -1,10 +1,8 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import TippyHeadless from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './MoreMenu.module.scss';
 import MoreMenuItem from './MoreMenuItem';
@@ -41,26 +39,32 @@ function MoreMenu({ children, items = [], onChange, activeTheme }) {
     };
 
     // Back MoreMenu
-    const HandleBack = () => {
+    const handleBack = () => {
         setHistory((prev) => prev.slice(0, prev.length - 1));
+    };
+
+    const renderResult = (attrs) => (
+        <div className={clsx(styles.content)} tabIndex="-1" {...attrs}>
+            <div className={clsx(styles.wrapper)}>
+                {history.length > 1 && <MoreLabel title={currentMenu.title} onBack={() => handleBack()} />}
+                <ul>{renderItems()}</ul>
+            </div>
+        </div>
+    );
+
+    const handleRestMenu = () => {
+        setHistory((prev) => prev.slice(0, 1));
     };
 
     return (
         <TippyHeadless
             // visible
             delay={[0, 800]}
-            onHide={() => (history.length > 1 ? HandleBack() : '')}
             interactive={true}
             hideOnClick={false}
             placement="bottom-end"
-            render={(attrs) => (
-                <div className={clsx(styles.content)} tabIndex="-1" {...attrs}>
-                    <div className={clsx(styles.wrapper)}>
-                        {history.length > 1 && <MoreLabel title={currentMenu.title} onBack={() => HandleBack()} />}
-                        <ul>{renderItems()}</ul>
-                    </div>
-                </div>
-            )}
+            render={renderResult}
+            onHide={handleRestMenu}
         >
             {children}
         </TippyHeadless>

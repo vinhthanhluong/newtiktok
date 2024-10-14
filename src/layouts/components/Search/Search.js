@@ -5,6 +5,7 @@ import { faMagnifyingGlass, faSpinner, faXmark } from '@fortawesome/free-solid-s
 import TippyHeadless from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 
+import * as request from '~/utils/request';
 import styles from './Search.module.scss';
 import { PopperWrapper } from '~/components/Popper';
 import AccountSearch from '~/layouts/components/AccountSearch';
@@ -26,15 +27,21 @@ function Search() {
         }
         setLoading(true);
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
+        const handleApi = async () => {
+            try {
+                const res = await request.get('users/search', {
+                    params: {
+                        q: debounce,
+                        type: 'less',
+                    },
+                });
                 setSearchResults(res.data);
                 setLoading(false);
-            })
-            .catch((err) => {
+            } catch (error) {
                 setLoading(false);
-            });
+            }
+        };
+        handleApi();
     }, [debounce]);
     const handleClear = () => {
         setSearchValue('');

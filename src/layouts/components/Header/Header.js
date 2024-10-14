@@ -2,18 +2,11 @@ import clsx from 'clsx';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCloudArrowUp,
-    faEllipsisVertical,
-    faMessage,
-    faPaperPlane,
-    faRightToBracket,
-} from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisVertical, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/';
 import 'tippy.js/dist/tippy.css';
 
 import styles from './Header.module.scss';
-import images from '~/assets/images';
 import Search from '~/layouts/components/Search';
 import Button from '~/components/Button';
 import config from '~/config';
