@@ -6,6 +6,8 @@ import Profile from '~/pages/Profile';
 import Upload from '~/pages/Upload';
 import Login from '~/pages/Login';
 import Feedback from '~/pages/Feedback';
+import Explore from '~/pages/Explore';
+import Live from '~/pages/Live';
 import HeaderOnly from '~/layouts/HeaderOnly';
 
 const publicRoutes = [
@@ -15,6 +17,8 @@ const publicRoutes = [
     { path: config.router.upload, component: Upload, layout: null },
     { path: config.router.login, component: Login, layout: HeaderOnly },
     { path: config.router.feedback, component: Feedback, layout: HeaderOnly },
+    { path: config.router.explore, component: Explore },
+    { path: config.router.live, component: Live },
 ];
 
 const privateRoutes = [];

@@ -1,4 +1,19 @@
 .wrapper {
-    width: 340px;
+    width: 240px;
     padding: 15px;
+    margin-right: 100px;
+}
+
+.text {
+    opacity: 0.5;
+    font-family: TikTokFont, Arial, Tahoma, PingFangSC, sans-serif;
+    font-size: 16px;
+}
+.textMid {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+.bsidebar {
+    width: 100%;
 }

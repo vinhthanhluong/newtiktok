@@ -16,7 +16,7 @@ import { UploadIcon, MessageIcon, InboxIcon, Logo } from '~/assets/icon';
 
 function Header() {
     // User
-    const CurrentUser = true;
+    const CurrentUser = false;
 
     // Set active MoreMenu item
     const [activeMenu, setActiveMenu] = useState('light');
