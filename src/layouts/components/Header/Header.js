@@ -21,11 +21,11 @@ function Header() {
     // Set active MoreMenu item
     const [activeMenu, setActiveMenu] = useState('light');
     // Set Theme dark || light
-    const [theme, setTheme] = useState('light');
+    const getTheme = JSON.parse(localStorage.getItem('theme'));
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
             case 'theme':
-                setTheme(menuItem.code);
+                localStorage.setItem('theme', JSON.stringify(menuItem.code));
                 setActiveMenu(menuItem.code);
                 break;
 
@@ -33,10 +33,11 @@ function Header() {
                 break;
         }
     };
+    console.log(getTheme);
 
     useEffect(() => {
-        document.body.className = theme === 'light' ? 'light-theme' : 'dark-theme';
-    }, [theme]);
+        document.body.className = getTheme === 'light' || getTheme === null ? 'light-theme' : 'dark-theme';
+    }, [getTheme]);
     return (
         <header className={clsx(styles.wrapper)}>
             <div className={clsx(styles.container)}>

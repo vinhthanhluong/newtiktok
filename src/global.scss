@@ -13,13 +13,18 @@
     --container: 1230px;
     --px: 15px;
     --shadow: rgba(0, 0, 0, 0.16);
+
+    --input-search: rgba(22, 24, 35, 0.06);
+    --ic-search: #a7a7ab;
 }
 
 .dark-theme {
     --w-cl: #121212;
     --b-cl: #fff;
-    --body-color: rgba(255, 255, 255, 0.9);
+    --body-color: rgba(255, 255, 255, 1);
     --shadow: rgba(255, 255, 255, 0.16);
+    --input-search: #fff;
+    --ic-search: #161823;
 }
 
 *,
