@@ -1,0 +1,36 @@
+.wrapper {
+}
+
+.item {
+    margin-bottom: 15px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.title {
+    font-weight: 700;
+    color: black;
+    opacity: 0.6;
+    margin-bottom: 0;
+}
+
+.sub {
+    display: flex;
+    flex-wrap: wrap;
+    display: none;
+    li {
+        margin-right: 10px;
+        margin-top: 4px;
+        line-height: 1.2;
+    }
+
+    a {
+        font-weight: 500;
+        font-size: 14px;
+        opacity: 0.6;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

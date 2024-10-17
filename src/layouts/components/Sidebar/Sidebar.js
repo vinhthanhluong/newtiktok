@@ -5,6 +5,7 @@ import Button from '~/components/Button';
 import config from '~/config';
 import MenuSidebar, { MenuSidebarItem } from './MenuSidebar';
 import { HomeIcon, ExploreIcon, UsersIcon, LiveIcon, UserIcon } from '~/assets/icon';
+import MfooterSidebar from './MfooterSidebar';
 
 function Sidebar() {
     return (
@@ -22,44 +23,12 @@ function Sidebar() {
                     Log in
                 </Button>
             </div>
-            <div className={clsx(styles.menufooter)}>
-                <div className={clsx(styles.mftItem)}>
-                    <p className={clsx(styles.mftTitle)}>Company</p>
-                    <ul className={clsx(styles.mftSub)}>
-                        <li>
-                            <a>About</a>
-                        </li>
-                        <li>
-                            <a>Newsroom</a>
-                        </li>
-                        <li>
-                            <a>Contact</a>
-                        </li>
-                        <li>
-                            <a>Careers</a>
-                        </li>
-                    </ul>
-                </div>
-                <div className={clsx(styles.mftItem)}>
-                    <p className={clsx(styles.mftTitle)}>Program</p>
-                    <ul className={clsx(styles.mftSub)}>
-                        <li>
-                            <a>About</a>
-                        </li>
-                        <li>
-                            <a>Newsroom</a>
-                        </li>
-                        <li>
-                            <a>Contact</a>
-                        </li>
-                        <li>
-                            <a>Careers</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <MfooterSidebar />
         </div>
     );
 }
-
 export default Sidebar;
+
+Sidebar.protoType = {
+    // icon: PropTypes.node.isRequired,
+};

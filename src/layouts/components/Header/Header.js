@@ -33,8 +33,6 @@ function Header() {
                 break;
         }
     };
-    console.log(getTheme);
-
     useEffect(() => {
         document.body.className = getTheme === 'light' || getTheme === null ? 'light-theme' : 'dark-theme';
     }, [getTheme]);
