@@ -12,7 +12,6 @@ function MoreMenu({ children, items = [], onChange, activeTheme }) {
     // show MoreMenu
     const [history, setHistory] = useState([{ data: items }]);
     const currentMenu = history[history.length - 1];
-    console.log(history);
 
     const renderItems = () => {
         return currentMenu.data.map((item, index) => {

@@ -4,7 +4,8 @@ const MENU_FOOTER_SIDEBAR = [
         children: [
             {
                 title: 'About',
-                to: '/about',
+                href: '/about',
+                target: '_blank',
             },
             {
                 title: 'Newsroom',

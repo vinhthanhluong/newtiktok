@@ -16,7 +16,7 @@ const publicRoutes = [
     { path: config.router.profile, component: Profile, layout: HeaderOnly },
     { path: config.router.upload, component: Upload, layout: null },
     { path: config.router.login, component: Login, layout: HeaderOnly },
-    { path: config.router.feedback, component: Feedback, layout: HeaderOnly },
+    { path: config.router.feedback, component: Feedback },
     { path: config.router.explore, component: Explore },
     { path: config.router.live, component: Live },
 ];

@@ -1,33 +1,41 @@
-import { useRef } from 'react';
+import { useState } from 'react';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 
 import styles from './MfooterSidebar.module.scss';
 import config from '~/config';
+import MfooterSidebarItem from './MfooterSidebarItem';
 
 function MfooterSidebar() {
     const data = config.jsonMenuFooterSideBar;
-    // const itemRef = useRef();
-    // const handleClick = () => {
-    //     const itemRefCurrent = itemRef.current.parentElement;
+    const [subItem, setSubItem] = useState(false);
+    // const [activeClass, setActiveClass] = useState(false);
 
-    //     itemRefCurrent.classList.add(clsx(styles.item, styles.active));
-    //     console.log(itemRefCurrent);
-    //     // itemRefCurrent.className = clsx(styles.title);
-    // };\
+    const handleClick = (e) => {
+        const nextElement = e.target.nextElementSibling;
+        if (nextElement.style.display === 'flex') {
+            nextElement.style.display = 'none';
+        } else {
+            nextElement.style.display = 'flex';
+        }
+
+        // const classItem = clsx(styles.active);
+        const parentElement = e.target.parentElement;
+        parentElement.classList.toggle('active');
+    };
 
     const renderData = () => {};
     return (
         <div className={clsx(styles.wrapper)}>
             {data.map((item, index) => {
-                console.log(item.children);
                 return (
                     <div className={clsx(styles.item)} key={index}>
-                        <p className={clsx(styles.title)}>{item.title}</p>
+                        <p className={clsx(styles.title)} onClick={(e) => handleClick(e)}>
+                            {item.title}
+                        </p>
                         <ul className={clsx(styles.sub)}>
-                            <li>
-                                <a href="#">asda</a>
-                            </li>
+                            {item.children.map((itm, idx) => (
+                                <MfooterSidebarItem key={idx} data={itm} />
+                            ))}
                         </ul>
                     </div>
                 );
