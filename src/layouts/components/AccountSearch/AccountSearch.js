@@ -12,10 +12,10 @@ function AccountSearch({ data }) {
             <Image src={data.avatar} alt={data.full_name} className={clsx(styles.avatar)} />
             <div className={clsx(styles.info)}>
                 <div className={clsx(styles.username)}>
-                    {data.full_name}
+                    {data.nickname}
                     {data.tick && <FontAwesomeIcon icon={faCircleCheck} />}
                 </div>
-                <div className={clsx(styles.nickname)}>{data.nickname}</div>
+                <div className={clsx(styles.nickname)}>{data.full_name}</div>
             </div>
         </Link>
     );

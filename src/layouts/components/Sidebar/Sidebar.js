@@ -6,6 +6,7 @@ import config from '~/config';
 import MenuSidebar, { MenuSidebarItem } from './MenuSidebar';
 import { HomeIcon, ExploreIcon, UsersIcon, LiveIcon, UserIcon } from '~/assets/icon';
 import MfooterSidebar from './MfooterSidebar';
+import SuggestedAccounts from './SuggestedAccounts';
 
 function Sidebar() {
     return (
@@ -17,13 +18,15 @@ function Sidebar() {
                 <MenuSidebarItem title="Live" to={config.router.live} icon={<LiveIcon />} />
                 <MenuSidebarItem title="Profile" to={config.router.profile} icon={<UserIcon />} />
             </MenuSidebar>
-            <div className={clsx(styles.textMid)}>
+            {/* <div className={clsx(styles.textMid)}>
                 <p className={clsx(styles.text)}>Log in to follow creators, like videos, and view comments.</p>
                 <Button className={styles.bsidebar} to={config.router.login} primary outline>
                     Log in
                 </Button>
             </div>
-            <MfooterSidebar />
+            <MfooterSidebar /> */}
+            <SuggestedAccounts label="Suggested accounts" />
+            <SuggestedAccounts label="Following accounts" />
         </div>
     );
 }

@@ -23,7 +23,6 @@ function MfooterSidebar() {
         parentElement.classList.toggle('active');
     };
 
-    const renderData = () => {};
     return (
         <div className={clsx(styles.wrapper)}>
             {data.map((item, index) => {

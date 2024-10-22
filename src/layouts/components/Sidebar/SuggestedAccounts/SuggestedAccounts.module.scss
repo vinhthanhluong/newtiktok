@@ -1,0 +1,149 @@
+.wrapper {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border: none;
+    }
+}
+
+.label {
+    font-weight: 600;
+    font-size: 17px;
+    color: #686868;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.accountItemWrap {
+    margin-bottom: 15px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+.accountItem {
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease;
+    &:hover {
+        .accountNickname {
+            color: var(--primary);
+        }
+    }
+    .accountImg {
+        width: 46px;
+        height: 46px;
+        flex-shrink: 0;
+        margin-bottom: 0;
+        img {
+            border-radius: 100%;
+        }
+    }
+    .accountTxt {
+        margin-left: 10px;
+    }
+    .accountNickname {
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 0;
+        transition: all 0.3s ease;
+        margin-bottom: 5px;
+        svg {
+            margin-left: 7px;
+            color: #19d4ee;
+        }
+    }
+    .accountName {
+        font-weight: 500;
+        font-size: 12px;
+        opacity: 0.5;
+        line-height: 1;
+    }
+
+    .accountLink {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+    }
+}
+
+.btnMore {
+    color: var(--primary);
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-block;
+}
+
+//Popup
+.accountPopup {
+    width: 400px;
+    .accPopupContent {
+        padding: 12px 20px;
+    }
+    .accPopupHead {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .accPopupImg {
+        margin: 0 10px 0 0;
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+        }
+    }
+
+    .accPopupBtn {
+        width: 140px;
+    }
+
+    .accPopupInfo {
+        margin-bottom: 10px;
+    }
+
+    .accPopupNickname {
+        font-weight: 700;
+        font-size: 22px;
+        display: flex;
+        align-items: center;
+        line-height: 1;
+        margin-bottom: 10px;
+        svg {
+            margin-left: 7px;
+            color: #19d4ee;
+        }
+    }
+
+    .accPopupName {
+        line-height: 1;
+        font-weight: 500;
+    }
+
+    .accPopupAct {
+        display: flex;
+    }
+
+    .accPopupActNumber {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 0;
+    }
+
+    .accPopupActText {
+        margin-left: 7px;
+        font-size: 22px;
+        margin-bottom: 0;
+        opacity: 0.7;
+        & + .accPopupActNumber {
+            margin-left: 20px;
+        }
+    }
+}
