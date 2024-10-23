@@ -11,10 +11,11 @@ import {
     KakaoTalkIcon,
     AppleIcon,
 } from '~/assets/icon';
+import LoginGoogle from './LoginGoogle';
+import LoginGoogleOAuth from './LoginGoogleOAuth';
 
 function Login() {
     return (
-        // {clsx(styles.title)}
         <div className={clsx(styles.wrapper)}>
             <div className={clsx(styles.content)}>
                 <p className={clsx(styles.title)}>Đặt nhập vào TikTok</p>
@@ -44,12 +45,14 @@ function Login() {
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        {/* <a href="#">
                             <span className={clsx(styles.listBtnIcon)}>
                                 <GoogleIcon />
                             </span>
                             <span className={clsx(styles.listBtnTitle)}>Tiếp tục với Google </span>
-                        </a>
+                        </a> */}
+                        {/* <LoginGoogle /> */}
+                        <LoginGoogleOAuth />
                     </li>
                     <li>
                         <a href="#">
