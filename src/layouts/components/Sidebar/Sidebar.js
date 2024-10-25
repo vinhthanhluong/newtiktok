@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import clsx from 'clsx';
 
 import styles from './Sidebar.module.scss';
@@ -7,10 +8,12 @@ import MenuSidebar, { MenuSidebarItem } from './MenuSidebar';
 import { HomeIcon, ExploreIcon, UsersIcon, LiveIcon, UserIcon } from '~/assets/icon';
 import MfooterSidebar from './MfooterSidebar';
 import SuggestedAccounts from './SuggestedAccounts';
+import { UserContext } from '~/pages/Login/UserContext';
 
 function Sidebar() {
     // User
-    const CurrentUser = false;
+    const { userInfo } = useContext(UserContext);
+    const CurrentUser = !!userInfo;
 
     return (
         <div className={clsx(styles.wrapper)}>

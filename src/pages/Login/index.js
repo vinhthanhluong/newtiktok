@@ -1,18 +1,9 @@
 import clsx from 'clsx';
 
 import styles from './login.module.scss';
-import {
-    QRIcon,
-    UserIcon,
-    FacebookIcon,
-    GoogleIcon,
-    TwitterIcon,
-    LineIcon,
-    KakaoTalkIcon,
-    AppleIcon,
-} from '~/assets/icon';
-import LoginGoogle from './LoginGoogle';
+import { QRIcon, UserIcon, FacebookIcon, TwitterIcon, LineIcon, KakaoTalkIcon, AppleIcon } from '~/assets/icon';
 import LoginGoogleOAuth from './LoginGoogleOAuth';
+import LoginBtn from './LoginBtn';
 
 function Login() {
     return (
@@ -20,72 +11,14 @@ function Login() {
             <div className={clsx(styles.content)}>
                 <p className={clsx(styles.title)}>Đặt nhập vào TikTok</p>
                 <ul className={clsx(styles.listBtn)}>
-                    <li>
-                        <a href="#">
-                            <span className={clsx(styles.listBtnIcon)}>
-                                <QRIcon />
-                            </span>
-                            <span className={clsx(styles.listBtnTitle)}>Sử dụng mã QR</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span className={clsx(styles.listBtnIcon)}>
-                                <UserIcon />
-                            </span>
-                            <span className={clsx(styles.listBtnTitle)}>Số điện thoại / Email / TikTok ID</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span className={clsx(styles.listBtnIcon)}>
-                                <FacebookIcon />
-                            </span>
-                            <span className={clsx(styles.listBtnTitle)}>Tiếp tục với Facebook</span>
-                        </a>
-                    </li>
-                    <li>
-                        {/* <a href="#">
-                            <span className={clsx(styles.listBtnIcon)}>
-                                <GoogleIcon />
-                            </span>
-                            <span className={clsx(styles.listBtnTitle)}>Tiếp tục với Google </span>
-                        </a> */}
-                        {/* <LoginGoogle /> */}
-                        <LoginGoogleOAuth />
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span className={clsx(styles.listBtnIcon)}>
-                                <TwitterIcon />
-                            </span>
-                            <span className={clsx(styles.listBtnTitle)}>Tiếp tục với Twitter</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span className={clsx(styles.listBtnIcon)}>
-                                <LineIcon />
-                            </span>
-                            <span className={clsx(styles.listBtnTitle)}>Tiếp tục với LINE</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span className={clsx(styles.listBtnIcon)}>
-                                <KakaoTalkIcon />
-                            </span>
-                            <span className={clsx(styles.listBtnTitle)}>Tiếp tục với KakaoTalk</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span className={clsx(styles.listBtnIcon)}>
-                                <AppleIcon />
-                            </span>
-                            <span className={clsx(styles.listBtnTitle)}>Tiếp tục với Apple</span>
-                        </a>
-                    </li>
+                    <LoginBtn icon={<QRIcon />} text="Sử dụng mã QR" />
+                    <LoginBtn icon={<UserIcon />} text="Số điện thoại / Email / TikTok ID" />
+                    <LoginBtn icon={<FacebookIcon />} text="Tiếp tục với Facebook" />
+                    <LoginGoogleOAuth />
+                    <LoginBtn icon={<TwitterIcon />} text="Tiếp tục với Twitter" />
+                    <LoginBtn icon={<LineIcon />} text="Tiếp tục với LINE" />
+                    <LoginBtn icon={<KakaoTalkIcon />} text="Tiếp tục với KakaoTalk" />
+                    <LoginBtn icon={<AppleIcon />} text="Tiếp tục với Apple" />
                 </ul>
                 <div className={clsx(styles.note)}>
                     Bằng việc tiếp tục với tài khoản có vị trí tại Vietnam, bạn đồng ý với Điều khoản dịch vụ, đồng thời

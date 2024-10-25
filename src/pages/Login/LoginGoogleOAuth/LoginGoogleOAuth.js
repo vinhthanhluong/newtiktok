@@ -1,27 +1,41 @@
-import React from 'react';
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
-const clientId = '268930622553-1jgto3qi5o8k8cntoq7jcrad48ulgimm.apps.googleusercontent.com';
+import { useState, useContext } from 'react';
+import { useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
+
+import LoginBtn from '../LoginBtn';
+import { GoogleIcon } from '~/assets/icon';
+import { UserContext } from '../UserContext';
 
 function LoginGoogleOAuth() {
-    const onSuccess = (credentialResponse) => {
-        const user = credentialResponse.credential;
-        console.log('Login Success:', user);
-        // Xử lý thông tin người dùng sau khi đăng nhập thành công
-    };
+    // const [userInfo, setUserInfo] = useState(null);
+    const { setUserInfo } = useContext(UserContext);
 
-    const onFailure = (error) => {
-        console.error('Login Failed:', error);
-        // Xử lý lỗi khi đăng nhập
-    };
-
-    return (
-        <GoogleOAuthProvider clientId={clientId}>
-            <div>
-                <h1>Chào Mừng Đến Với Ứng Dụng Của Chúng Tôi!</h1>
-                <GoogleLogin onSuccess={onSuccess} onFailure={onFailure} style={{ marginTop: '20px' }} />
-            </div>
-        </GoogleOAuthProvider>
-    );
+    const login = useGoogleLogin({
+        onSuccess: async (response) => {
+            try {
+                const res = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
+                    headers: {
+                        Authorization: `Bearer ${response.access_token}`,
+                    },
+                });
+                setUserInfo(res.data); // Lưu thông tin người dùng vào state
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        onError: () => {
+            console.log('Login Failed'); // Xử lý khi đăng nhập thất bại
+        },
+    });
+    {
+        /* {userInfo && (
+                <div>
+                    <h2>Welcome, {userInfo.name}</h2>
+                    <img src={userInfo.picture} alt="User Avatar" />
+                </div>
+            )} */
+    }
+    return <LoginBtn icon={<GoogleIcon />} text="Tiếp tục với Google" onclick={() => login()} />;
 }
 
 export default LoginGoogleOAuth;
