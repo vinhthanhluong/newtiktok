@@ -55,6 +55,7 @@ function Search() {
                 visible={showResult && searchResults.length > 0}
                 interactive={true}
                 placement="bottom"
+                onClickOutside={() => handleClear()}
                 render={(attrs) => (
                     <div className={clsx(styles.searchResult)} tabIndex="-1" {...attrs}>
                         <PopperWrapper>
