@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/newtiktok/static/css/main.e38ad3c7.css",
+    "main.js": "/newtiktok/static/js/main.a751bf2a.js",
+    "static/js/453.8fe2a30b.chunk.js": "/newtiktok/static/js/453.8fe2a30b.chunk.js",
+    "index.html": "/newtiktok/index.html",
+    "main.e38ad3c7.css.map": "/newtiktok/static/css/main.e38ad3c7.css.map",
+    "main.a751bf2a.js.map": "/newtiktok/static/js/main.a751bf2a.js.map",
+    "453.8fe2a30b.chunk.js.map": "/newtiktok/static/js/453.8fe2a30b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e38ad3c7.css",
+    "static/js/main.a751bf2a.js"
+  ]
+}
