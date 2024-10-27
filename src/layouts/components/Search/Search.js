@@ -5,11 +5,11 @@ import { faMagnifyingGlass, faSpinner, faXmark } from '@fortawesome/free-solid-s
 import TippyHeadless from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 
-import * as request from '~/utils/request';
 import styles from './Search.module.scss';
 import { PopperWrapper } from '~/components/Popper';
 import AccountSearch from '~/layouts/components/AccountSearch';
 import { useDebounce } from '~/hook';
+import * as searchServices from '~/services/searchServices';
 
 function Search() {
     const [searchValue, setSearchValue] = useState('');
@@ -25,23 +25,14 @@ function Search() {
         if (!searchValue.trim()) {
             return;
         }
-        setLoading(true);
 
-        const handleApi = async () => {
-            try {
-                const res = await request.get('users/search', {
-                    params: {
-                        q: debounce,
-                        type: 'less',
-                    },
-                });
-                setSearchResults(res.data);
-                setLoading(false);
-            } catch (error) {
-                setLoading(false);
-            }
+        const fetchApi = async () => {
+            setLoading(true);
+            const result = await searchServices.search(debounce); //type:less
+            setSearchResults(result);
+            setLoading(false);
         };
-        handleApi();
+        fetchApi();
     }, [debounce]);
     const handleClear = () => {
         setSearchValue('');

@@ -27,14 +27,6 @@ function LoginGoogleOAuth() {
             console.log('Login Failed'); // Xử lý khi đăng nhập thất bại
         },
     });
-    {
-        /* {userInfo && (
-                <div>
-                    <h2>Welcome, {userInfo.name}</h2>
-                    <img src={userInfo.picture} alt="User Avatar" />
-                </div>
-            )} */
-    }
     return <LoginBtn icon={<GoogleIcon />} text="Tiếp tục với Google" onclick={() => login()} />;
 }
 
