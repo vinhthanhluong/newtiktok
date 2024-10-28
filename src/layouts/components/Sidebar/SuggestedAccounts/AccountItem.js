@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import TippyHeadless from '@tippyjs/react/headless';
@@ -10,7 +11,7 @@ import { PopperWrapper } from '~/components/Popper';
 import Button from '~/components/Button';
 import config from '~/config';
 
-function AccountItem() {
+function AccountItem({ data }) {
     const renderPreview = (props) => {
         return (
             <div className={clsx(styles.accountPopup)} tabIndex="-1" {...props}>
@@ -18,7 +19,7 @@ function AccountItem() {
                     <div className={clsx(styles.accPopupContent)}>
                         <div className={clsx(styles.accPopupHead)}>
                             <p className={clsx(styles.accPopupImg)}>
-                                <Image src="https://fullstack.edu.vn/assets/f8-icon-lV2rGpF0.png" alt="" />
+                                <Image src={data.avatar} alt={data.nickname} />
                             </p>
                             <Button primary to={config.router.following} className={clsx(styles.accPopupBtn)}>
                                 Follow
@@ -26,15 +27,15 @@ function AccountItem() {
                         </div>
                         <div className={clsx(styles.accPopupInfo)}>
                             <p className={clsx(styles.accPopupNickname)}>
-                                theanh28entertainment
-                                <FontAwesomeIcon icon={faCircleCheck} />
+                                {data.nickname}
+                                {data.tick && <FontAwesomeIcon icon={faCircleCheck} />}
                             </p>
-                            <p className={clsx(styles.accPopupName)}>Theanh28 Entertainment</p>
+                            <p className={clsx(styles.accPopupName)}>{`${data.first_name} ${data.last_name}`}</p>
                         </div>
                         <div className={clsx(styles.accPopupAct)}>
-                            <p className={clsx(styles.accPopupActNumber)}>6.7M</p>
+                            <p className={clsx(styles.accPopupActNumber)}>{data.followers_count}</p>
                             <p className={clsx(styles.accPopupActText)}>Followers</p>
-                            <p className={clsx(styles.accPopupActNumber)}>429.9M</p>
+                            <p className={clsx(styles.accPopupActNumber)}>{data.likes_count}</p>
                             <p className={clsx(styles.accPopupActText)}>Likes</p>
                         </div>
                     </div>
@@ -56,14 +57,14 @@ function AccountItem() {
             >
                 <div className={clsx(styles.accountItem)}>
                     <p className={clsx(styles.accountImg)}>
-                        <Image src="https://fullstack.edu.vn/assets/f8-icon-lV2rGpF0.png" alt="" />
+                        <Image src={data.avatar} alt={data.nickname} />
                     </p>
                     <div className={clsx(styles.accountTxt)}>
                         <p className={clsx(styles.accountNickname)}>
-                            theanh28entertainment
-                            <FontAwesomeIcon icon={faCircleCheck} />
+                            {data.nickname}
+                            {data.tick && <FontAwesomeIcon icon={faCircleCheck} />}
                         </p>
-                        <p className={clsx(styles.accountName)}>Theanh28 Entertainment</p>
+                        <p className={clsx(styles.accountName)}>{`${data.first_name} ${data.last_name}`}</p>
                     </div>
                     <a className={clsx(styles.accountLink)}></a>
                 </div>
@@ -71,5 +72,9 @@ function AccountItem() {
         </div>
     );
 }
+
+AccountItem.propTypes = {
+    data: PropTypes.object.isRequired,
+};
 
 export default AccountItem;

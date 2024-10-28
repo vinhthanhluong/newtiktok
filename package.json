@@ -1,7 +1,7 @@
 {
     "name": "newtiktok",
     "version": "0.1.0",
-    "homepage": "https://vinhthanhluong.github.io/newtiktok",
+    "homepage": "https://vinhthanhluong.github.io/newtiktok/",
     "private": true,
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.6.0",

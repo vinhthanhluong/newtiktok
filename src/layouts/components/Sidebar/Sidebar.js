@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import clsx from 'clsx';
 
 import styles from './Sidebar.module.scss';
@@ -9,11 +9,24 @@ import { HomeIcon, ExploreIcon, UsersIcon, LiveIcon, UserIcon } from '~/assets/i
 import MfooterSidebar from './MfooterSidebar';
 import SuggestedAccounts from './SuggestedAccounts';
 import { UserContext } from '~/pages/Login/UserContext';
+import * as suggestedServices from '~/services/suggestedServices';
 
 function Sidebar() {
     // User
     const { userInfo } = useContext(UserContext);
-    const CurrentUser = !!userInfo;
+    // const CurrentUser = !!userInfo;
+    const CurrentUser = true;
+
+    //Get suggestions
+    const [suggestedUsers, setSuggestedUsers] = useState([]);
+
+    useEffect(() => {
+        const fetchApiSuggested = async () => {
+            const result = await suggestedServices.suggested();
+            setSuggestedUsers(result);
+        };
+        fetchApiSuggested();
+    }, []);
 
     return (
         <div className={clsx(styles.wrapper)}>
@@ -26,7 +39,7 @@ function Sidebar() {
             </MenuSidebar>
             {CurrentUser ? (
                 <>
-                    <SuggestedAccounts label="Suggested accounts" />
+                    <SuggestedAccounts label="Suggested accounts" data={suggestedUsers} />
                     <SuggestedAccounts label="Following accounts" />
                 </>
             ) : (
