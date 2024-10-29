@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-import styles from './login.module.scss';
+import styles from './loginList.module.scss';
 
 function LoginBtn({ icon, text, onclick }) {
     return (

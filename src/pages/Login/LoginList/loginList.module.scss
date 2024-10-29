@@ -1,0 +1,57 @@
+.wrapper {
+}
+
+.title {
+    font-size: 33px;
+    margin: 0 auto 16px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.listBtn {
+    li {
+        margin-bottom: 10px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.listBtnItem {
+    position: relative;
+    display: block;
+    background-color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    &:hover {
+        border-color: rgb(208, 209, 211);
+        background-color: rgb(248, 248, 248);
+    }
+}
+
+.listBtnIcon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    margin: auto 0;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listBtnTitle {
+    font-weight: 500;
+}
+
+.note {
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.4;
+    margin-top: 15px;
+    color: rgba($color: #222, $alpha: 0.7);
+}

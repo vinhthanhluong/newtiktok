@@ -8,14 +8,14 @@ import MenuSidebar, { MenuSidebarItem } from './MenuSidebar';
 import { HomeIcon, ExploreIcon, UsersIcon, LiveIcon, UserIcon } from '~/assets/icon';
 import MfooterSidebar from './MfooterSidebar';
 import SuggestedAccounts from './SuggestedAccounts';
-import { UserContext } from '~/pages/Login/UserContext';
+import { UserAuth } from '~/components/Stone';
 import * as suggestedServices from '~/services/suggestedServices';
 
 function Sidebar() {
     // User
-    const { userInfo } = useContext(UserContext);
-    // const CurrentUser = !!userInfo;
-    const CurrentUser = true;
+    const { userGoogle } = UserAuth();
+    const CurrentUser = !!userGoogle;
+    // const CurrentUser = true;
 
     //Get suggestions
     const [suggestedUsers, setSuggestedUsers] = useState([]);

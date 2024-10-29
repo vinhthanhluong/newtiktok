@@ -1,14 +1,13 @@
-import { useState, useContext } from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 
-import LoginBtn from '../LoginBtn';
+import LoginBtn from '../LoginList/LoginBtn';
 import { GoogleIcon } from '~/assets/icon';
-import { UserContext } from '../UserContext';
+import { UserAuth } from '~/components/Stone';
 
 function LoginGoogleOAuth() {
     // const [userInfo, setUserInfo] = useState(null);
-    const { setUserInfo } = useContext(UserContext);
+    const { setUserGoogle } = UserAuth();
 
     const login = useGoogleLogin({
         onSuccess: async (response) => {
@@ -18,7 +17,7 @@ function LoginGoogleOAuth() {
                         Authorization: `Bearer ${response.access_token}`,
                     },
                 });
-                setUserInfo(res.data); // Lưu thông tin người dùng vào state
+                setUserGoogle(res.data); // Lưu thông tin người dùng vào state
             } catch (error) {
                 console.log(error);
             }

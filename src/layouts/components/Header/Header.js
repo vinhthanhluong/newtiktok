@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
@@ -13,12 +13,12 @@ import config from '~/config';
 import MoreMenu from '~/layouts/components/MoreMenu';
 import Image from '~/components/Image';
 import { UploadIcon, MessageIcon, InboxIcon, Logo } from '~/assets/icon';
-import { UserContext } from '~/pages/Login/UserContext';
+import { UserAuth } from '~/components/Stone';
 
 function Header() {
     // User
-    const { userInfo } = useContext(UserContext);
-    const CurrentUser = !!userInfo;
+    const { userGoogle } = UserAuth();
+    const CurrentUser = !!userGoogle;
 
     // Set active MoreMenu item
     const [activeMenu, setActiveMenu] = useState('light');
@@ -94,7 +94,7 @@ function Header() {
                     >
                         {CurrentUser ? (
                             <div className={clsx(styles.userAvatar)}>
-                                <Image src={userInfo.picture} alt={userInfo.name} />
+                                <Image src={userGoogle.picture} alt={userGoogle.name} />
                             </div>
                         ) : (
                             <div className={clsx(styles.btnMore)}>
