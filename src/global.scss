@@ -110,7 +110,7 @@ img {
 
 main {
     margin-top: 60px;
-    height: 2000px;
+    min-height: calc(100vh - 60px);
 }
 
 // Custom tippy

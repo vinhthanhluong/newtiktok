@@ -9,7 +9,7 @@ import { HomeIcon, ExploreIcon, UsersIcon, LiveIcon, UserIcon } from '~/assets/i
 import MfooterSidebar from './MfooterSidebar';
 import SuggestedAccounts from './SuggestedAccounts';
 import { UserAuth } from '~/components/Stone';
-import * as suggestedServices from '~/services/suggestedServices';
+import * as accountSuggestService from '~/services/accountSuggestService';
 
 function Sidebar() {
     // User
@@ -22,7 +22,7 @@ function Sidebar() {
 
     useEffect(() => {
         const fetchApiSuggested = async () => {
-            const result = await suggestedServices.suggested();
+            const result = await accountSuggestService.suggested();
             setSuggestedUsers(result);
         };
         fetchApiSuggested();

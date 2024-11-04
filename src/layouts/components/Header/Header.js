@@ -76,14 +76,6 @@ function Header() {
                             >
                                 Log in
                             </Button>
-                            <Button
-                                to={config.router.login}
-                                primary
-                                outline
-                                iconLeft={<FontAwesomeIcon icon={faRightToBracket} />}
-                            >
-                                Register
-                            </Button>
                         </>
                     )}
 

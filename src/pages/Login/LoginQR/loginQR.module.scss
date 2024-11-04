@@ -1,0 +1,26 @@
+.wrapper {
+    position: relative;
+    z-index: 1;
+}
+.title {
+    font-size: 33px;
+    margin: 0 auto 25px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.formQRBox {
+    border: 1px solid #ccc;
+    padding: 25px 25px 23px;
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 30px;
+}
+.formQRText {
+    p {
+        margin-bottom: 5px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

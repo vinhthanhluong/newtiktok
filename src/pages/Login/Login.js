@@ -2,17 +2,41 @@ import clsx from 'clsx';
 
 import styles from './login.module.scss';
 import LoginList from './LoginList';
-import LoginUserDeafult from './LoginUserDeafult';
+import LoginDefault from './LoginDefault';
+import LoginQR from './LoginQR';
 import { UserAuth } from '~/components/Stone';
+import { ArrowLeftIcon } from '~/assets/icon';
 
 function Login() {
-    const { loginDeafult } = UserAuth();
+    const { loginTab, setLoginTab } = UserAuth();
+
+    const handleBack = () => {
+        setLoginTab('default');
+    };
 
     return (
         <div className={clsx(styles.wrapper)}>
-            <div className={clsx(styles.content)}>{loginDeafult ? <LoginUserDeafult /> : <LoginList />}</div>
+            {loginTab !== 'default' && (
+                <div className={clsx(styles.back)} onClick={handleBack}>
+                    <ArrowLeftIcon />
+                </div>
+            )}
+            <div className={clsx(styles.content)}>
+                {(() => {
+                    switch (loginTab) {
+                        case 'default':
+                            return <LoginList />;
+                        case 'loginEmail':
+                            return <LoginDefault />;
+                        case 'loginQR':
+                            return <LoginQR />;
+                        default:
+                            return null;
+                    }
+                })()}
+            </div>
             <div className={clsx(styles.footer)}>
-                Bạn không có tài khoản? <a className={clsx(styles.act)}>Đăng ký</a>
+                Don’t have an account? <a className={clsx(styles.act)}>Sign up</a>
             </div>
         </div>
     );

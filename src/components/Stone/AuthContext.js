@@ -9,13 +9,16 @@ export function UserAuth() {
 
 export function AuthProvider({ children }) {
     const [userGoogle, setUserGoogle] = useState(null);
-    const [loginDeafult, setLoginDeafult] = useState(false);
+    const [loginTab, setLoginTab] = useState('default');
+    const [backAuth, setBackAuth] = useState(true);
 
     const value = {
         userGoogle,
         setUserGoogle,
-        loginDeafult,
-        setLoginDeafult,
+        loginTab,
+        setLoginTab,
+        backAuth,
+        setBackAuth,
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

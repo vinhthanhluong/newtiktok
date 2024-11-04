@@ -1,4 +1,5 @@
 .wrapper {
+    position: relative;
     background-color: #fff;
     border-radius: 20px;
     max-width: 100%;
@@ -6,11 +7,23 @@
     // height: 640px;
     margin: 0 auto;
     box-shadow: 0px 0px 10px rgba($color: #000, $alpha: 0.16);
+    margin-top: 100px;
+    z-index: 0;
 }
 .content {
     padding: 40px 40px 20px;
-    height: 628px;
+    height: 450px;
 }
+
+.back {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+}
+
 // .title {
 //     font-size: 33px;
 //     margin: 0 auto 16px;
@@ -32,3 +45,12 @@
         text-decoration: underline;
     }
 }
+
+// .back {
+//     position: absolute;
+//     top: 10px;
+//     left: 10px;
+//     font-size: 24px;
+//     padding: 10px;
+//     cursor: pointer;
+// }

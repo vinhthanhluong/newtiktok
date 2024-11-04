@@ -9,7 +9,7 @@ import styles from './Search.module.scss';
 import { PopperWrapper } from '~/components/Popper';
 import AccountSearch from '~/layouts/components/AccountSearch';
 import { useDebounce } from '~/hook';
-import * as searchServices from '~/services/searchServices';
+import * as searchService from '~/services/searchService';
 
 function Search() {
     const [searchValue, setSearchValue] = useState('');
@@ -28,7 +28,7 @@ function Search() {
 
         const fetchApi = async () => {
             setLoading(true);
-            const result = await searchServices.search(debounce); //type:less
+            const result = await searchService.search(debounce); //type:less
             setSearchResults(result);
             setLoading(false);
         };
