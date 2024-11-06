@@ -6,9 +6,9 @@ import LoginDefault from './LoginDefault';
 import LoginQR from './LoginQR';
 import { UserAuth } from '~/components/Stone';
 import { ArrowLeftIcon } from '~/assets/icon';
-
+import Button from '~/components/Button';
 function Login() {
-    const { loginTab, setLoginTab } = UserAuth();
+    const { loginTab, setLoginTab, userAuthDefault, userToken } = UserAuth();
 
     const handleBack = () => {
         setLoginTab('default');
@@ -34,10 +34,22 @@ function Login() {
                             return null;
                     }
                 })()}
+
+                {/* <p className={clsx(styles.logoutTitle)}>Are you sure you want to log out?</p>
+                <div className={clsx(styles.logoutBtn)}>
+                    <Button white className={clsx(styles.btnCancel)}>
+                        Cancel
+                    </Button>
+                    <Button primary className={clsx(styles.btnLogout)}>
+                        Log out
+                    </Button>
+                </div> */}
             </div>
-            <div className={clsx(styles.footer)}>
-                Don’t have an account? <a className={clsx(styles.act)}>Sign up</a>
-            </div>
+            {userAuthDefault && userToken && (
+                <div className={clsx(styles.footer)}>
+                    Don’t have an account? <a className={clsx(styles.act)}>Sign up</a>
+                </div>
+            )}
         </div>
     );
 }

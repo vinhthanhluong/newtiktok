@@ -2,11 +2,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoins, faGear, faRightToBracket, faUser } from '@fortawesome/free-solid-svg-icons';
 import jsonMoreMenu from './jsonMoreMenu';
 
+const userAuthDefault = JSON.parse(localStorage.getItem('token')) ?? '';
+
 const MENU_MORES_USER = [
     {
         icon: <FontAwesomeIcon icon={faUser} />,
         title: 'View Profile',
-        to: '/profile',
+        to: `/@${userAuthDefault.nickname}`,
     },
     {
         icon: <FontAwesomeIcon icon={faCoins} />,
@@ -22,7 +24,7 @@ const MENU_MORES_USER = [
     {
         icon: <FontAwesomeIcon icon={faRightToBracket} />,
         title: 'Log out',
-        to: '/',
+        to: '/logout',
     },
 ];
 

@@ -8,11 +8,17 @@ export function UserAuth() {
 }
 
 export function AuthProvider({ children }) {
+    // const [userAuthDefault, setUserAuthDefault] = useState(null);
     const [userGoogle, setUserGoogle] = useState(null);
     const [loginTab, setLoginTab] = useState('default');
     const [backAuth, setBackAuth] = useState(true);
 
+    const userAuthDefault = JSON.parse(localStorage.getItem('token')) ?? '';
+    const userToken = JSON.parse(localStorage.getItem('user-id')) ?? '';
+
     const value = {
+        userAuthDefault,
+        userToken,
         userGoogle,
         setUserGoogle,
         loginTab,

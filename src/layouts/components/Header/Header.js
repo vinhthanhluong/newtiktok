@@ -16,9 +16,12 @@ import { UploadIcon, MessageIcon, InboxIcon, Logo } from '~/assets/icon';
 import { UserAuth } from '~/components/Stone';
 
 function Header() {
-    // User
-    const { userGoogle } = UserAuth();
-    const CurrentUser = !!userGoogle;
+    // UserGoogle
+    // const { userGoogle } = UserAuth();
+    // const CurrentUser = !!userGoogle;
+
+    // User Width Default
+    const { userAuthDefault, userToken } = UserAuth();
 
     // Set active MoreMenu item
     const [activeMenu, setActiveMenu] = useState('light');
@@ -27,6 +30,10 @@ function Header() {
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
             case 'theme':
+                localStorage.setItem('theme', JSON.stringify(menuItem.code));
+                setActiveMenu(menuItem.code);
+                break;
+            case 'zxc':
                 localStorage.setItem('theme', JSON.stringify(menuItem.code));
                 setActiveMenu(menuItem.code);
                 break;
@@ -48,7 +55,7 @@ function Header() {
                 </div>
                 <Search />
                 <div className={clsx(styles.action)}>
-                    {CurrentUser ? (
+                    {userAuthDefault && userToken ? (
                         <>
                             <Tippy delay={[0, 200]} content="Upload" placement="bottom">
                                 <div className={clsx(styles.userCloud, styles.userIcon)}>
@@ -80,13 +87,13 @@ function Header() {
                     )}
 
                     <MoreMenu
-                        items={CurrentUser ? config.jsonMoreMenuUser : config.jsonMoreMenu}
+                        items={userAuthDefault && userToken ? config.jsonMoreMenuUser : config.jsonMoreMenu}
                         onChange={handleMenuChange}
                         activeTheme={activeMenu}
                     >
-                        {CurrentUser ? (
+                        {userAuthDefault && userToken ? (
                             <div className={clsx(styles.userAvatar)}>
-                                <Image src={userGoogle.picture} alt={userGoogle.name} />
+                                <Image src={userAuthDefault.avatar} alt={userAuthDefault.nickname} />
                             </div>
                         ) : (
                             <div className={clsx(styles.btnMore)}>

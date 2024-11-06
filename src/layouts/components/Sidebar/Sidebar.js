@@ -12,10 +12,13 @@ import { UserAuth } from '~/components/Stone';
 import * as accountSuggestService from '~/services/accountSuggestService';
 
 function Sidebar() {
-    // User
-    const { userGoogle } = UserAuth();
-    const CurrentUser = !!userGoogle;
-    // const CurrentUser = true;
+    // UserGoogle
+    // const { userGoogle } = UserAuth();
+    // const CurrentUser = !!userGoogle;
+
+    // User Width Default
+    const { userAuthDefault } = UserAuth();
+    const CurrentUser = !!userAuthDefault;
 
     //Get suggestions
     const [suggestedUsers, setSuggestedUsers] = useState([]);
