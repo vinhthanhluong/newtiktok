@@ -1,0 +1,30 @@
+.wrapper {
+    margin-top: 30px;
+}
+
+.logoutTitle {
+    text-align: center;
+    font-weight: 700;
+    font-size: 26px;
+}
+
+.logoutBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    button {
+        width: 130px;
+        height: 50px;
+    }
+
+    .btnCancel {
+        background-color: #ff0000;
+        color: #fff;
+        &:hover {
+            background-color: #c90b0b;
+        }
+    }
+
+    .btnLogout {
+    }
+}

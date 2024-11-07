@@ -24,7 +24,7 @@ const MENU_MORES_USER = [
     {
         icon: <FontAwesomeIcon icon={faRightToBracket} />,
         title: 'Log out',
-        to: '/logout',
+        type: 'logout',
     },
 ];
 

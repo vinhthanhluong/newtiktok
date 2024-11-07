@@ -1,7 +1,7 @@
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 
-import LoginBtn from '../LoginList/LoginBtn';
+import LoginBtn from '../Login/LoginBtn';
 import { GoogleIcon } from '~/assets/icon';
 import { UserAuth } from '~/components/Stone';
 

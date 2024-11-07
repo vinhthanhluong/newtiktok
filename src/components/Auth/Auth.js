@@ -1,51 +1,54 @@
 import clsx from 'clsx';
 
-import styles from './login.module.scss';
-import LoginList from './LoginList';
+import styles from './auth.module.scss';
+import Login from './Login';
 import LoginDefault from './LoginDefault';
 import LoginQR from './LoginQR';
 import { UserAuth } from '~/components/Stone';
-import { ArrowLeftIcon } from '~/assets/icon';
-import Button from '~/components/Button';
-function Login() {
-    const { loginTab, setLoginTab, userAuthDefault, userToken } = UserAuth();
+import { ArrowLeftIcon, CloseIcon } from '~/assets/icon';
+import Logout from './Logout';
+
+function Auth() {
+    const { loginTab, setLoginTab, userAuthDefault, userToken, setOpenAuth } = UserAuth();
 
     const handleBack = () => {
         setLoginTab('default');
     };
 
+    const handleClose = () => {
+        setOpenAuth(false);
+        setLoginTab('default');
+    };
+
     return (
-        <div className={clsx(styles.wrapper)}>
-            {loginTab !== 'default' && (
+        <div className={clsx(styles.authPopup)}>
+            {loginTab !== 'default' && loginTab !== 'logout' && (
                 <div className={clsx(styles.back)} onClick={handleBack}>
                     <ArrowLeftIcon />
+                </div>
+            )}
+            {loginTab !== 'logout' && (
+                <div className={clsx(styles.close)} onClick={handleClose}>
+                    <CloseIcon />
                 </div>
             )}
             <div className={clsx(styles.content)}>
                 {(() => {
                     switch (loginTab) {
                         case 'default':
-                            return <LoginList />;
-                        case 'loginEmail':
+                            return <Login />;
+                        case 'loginDefault':
                             return <LoginDefault />;
                         case 'loginQR':
                             return <LoginQR />;
+                        case 'logout':
+                            return <Logout />;
                         default:
                             return null;
                     }
                 })()}
-
-                {/* <p className={clsx(styles.logoutTitle)}>Are you sure you want to log out?</p>
-                <div className={clsx(styles.logoutBtn)}>
-                    <Button white className={clsx(styles.btnCancel)}>
-                        Cancel
-                    </Button>
-                    <Button primary className={clsx(styles.btnLogout)}>
-                        Log out
-                    </Button>
-                </div> */}
             </div>
-            {userAuthDefault && userToken && (
+            {!userAuthDefault && !userToken && (
                 <div className={clsx(styles.footer)}>
                     Don’t have an account? <a className={clsx(styles.act)}>Sign up</a>
                 </div>
@@ -54,4 +57,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Auth;

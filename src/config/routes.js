@@ -3,7 +3,6 @@ const router = {
     following: '/following',
     profile: '/:nickname',
     upload: '/upload',
-    login: '/login',
     feedback: '/feedback',
     live: '/live',
     explore: '/explore',

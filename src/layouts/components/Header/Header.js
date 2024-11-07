@@ -14,6 +14,7 @@ import MoreMenu from '~/layouts/components/MoreMenu';
 import Image from '~/components/Image';
 import { UploadIcon, MessageIcon, InboxIcon, Logo } from '~/assets/icon';
 import { UserAuth } from '~/components/Stone';
+import Auth from '~/components/Auth';
 
 function Header() {
     // UserGoogle
@@ -21,7 +22,7 @@ function Header() {
     // const CurrentUser = !!userGoogle;
 
     // User Width Default
-    const { userAuthDefault, userToken } = UserAuth();
+    const { userAuthDefault, userToken, openAuth, setOpenAuth, setLoginTab } = UserAuth();
 
     // Set active MoreMenu item
     const [activeMenu, setActiveMenu] = useState('light');
@@ -33,77 +34,86 @@ function Header() {
                 localStorage.setItem('theme', JSON.stringify(menuItem.code));
                 setActiveMenu(menuItem.code);
                 break;
-            case 'zxc':
-                localStorage.setItem('theme', JSON.stringify(menuItem.code));
-                setActiveMenu(menuItem.code);
+            case 'logout':
+                setOpenAuth(true);
+                setLoginTab('logout');
                 break;
 
             default:
                 break;
         }
     };
+
     useEffect(() => {
         document.body.className = getTheme === 'light' || getTheme === null ? 'light-theme' : 'dark-theme';
     }, [getTheme]);
-    return (
-        <header className={clsx(styles.wrapper)}>
-            <div className={clsx(styles.container)}>
-                <div className={clsx(styles.logo)}>
-                    <Link to={config.router.home}>
-                        <Logo width="118" height="42" />
-                    </Link>
-                </div>
-                <Search />
-                <div className={clsx(styles.action)}>
-                    {userAuthDefault && userToken ? (
-                        <>
-                            <Tippy delay={[0, 200]} content="Upload" placement="bottom">
-                                <div className={clsx(styles.userCloud, styles.userIcon)}>
-                                    <UploadIcon />
-                                </div>
-                            </Tippy>
-                            <Tippy delay={[0, 200]} content="Send" placement="bottom">
-                                <div className={clsx(styles.userPlane, styles.userIcon)}>
-                                    <MessageIcon />
-                                </div>
-                            </Tippy>
-                            <Tippy delay={[0, 200]} content="Message" placement="bottom">
-                                <div className={clsx(styles.userMessage, styles.userIcon)}>
-                                    <InboxIcon />
-                                    <span>99+</span>
-                                </div>
-                            </Tippy>
-                        </>
-                    ) : (
-                        <>
-                            <Button
-                                to={config.router.login}
-                                primary
-                                iconLeft={<FontAwesomeIcon icon={faRightToBracket} />}
-                            >
-                                Log in
-                            </Button>
-                        </>
-                    )}
 
-                    <MoreMenu
-                        items={userAuthDefault && userToken ? config.jsonMoreMenuUser : config.jsonMoreMenu}
-                        onChange={handleMenuChange}
-                        activeTheme={activeMenu}
-                    >
+    const handleLogin = () => {
+        setOpenAuth(true);
+    };
+
+    return (
+        <>
+            <header className={clsx(styles.wrapper)}>
+                <div className={clsx(styles.container)}>
+                    <div className={clsx(styles.logo)}>
+                        <Link to={config.router.home}>
+                            <Logo width="118" height="42" />
+                        </Link>
+                    </div>
+                    <Search />
+                    <div className={clsx(styles.action)}>
                         {userAuthDefault && userToken ? (
-                            <div className={clsx(styles.userAvatar)}>
-                                <Image src={userAuthDefault.avatar} alt={userAuthDefault.nickname} />
-                            </div>
+                            <>
+                                <Tippy delay={[0, 200]} content="Upload" placement="bottom">
+                                    <div className={clsx(styles.userCloud, styles.userIcon)}>
+                                        <UploadIcon />
+                                    </div>
+                                </Tippy>
+                                <Tippy delay={[0, 200]} content="Send" placement="bottom">
+                                    <div className={clsx(styles.userPlane, styles.userIcon)}>
+                                        <MessageIcon />
+                                    </div>
+                                </Tippy>
+                                <Tippy delay={[0, 200]} content="Message" placement="bottom">
+                                    <div className={clsx(styles.userMessage, styles.userIcon)}>
+                                        <InboxIcon />
+                                        <span>99+</span>
+                                    </div>
+                                </Tippy>
+                            </>
                         ) : (
-                            <div className={clsx(styles.btnMore)}>
-                                <FontAwesomeIcon icon={faEllipsisVertical} />
-                            </div>
+                            <>
+                                <Button
+                                    primary
+                                    iconLeft={<FontAwesomeIcon icon={faRightToBracket} />}
+                                    onClick={handleLogin}
+                                >
+                                    Log in
+                                </Button>
+                            </>
                         )}
-                    </MoreMenu>
+
+                        <MoreMenu
+                            items={userAuthDefault && userToken ? config.jsonMoreMenuUser : config.jsonMoreMenu}
+                            onChange={handleMenuChange}
+                            activeTheme={activeMenu}
+                        >
+                            {userAuthDefault && userToken ? (
+                                <div className={clsx(styles.userAvatar)}>
+                                    <Image src={userAuthDefault.avatar} alt={userAuthDefault.nickname} />
+                                </div>
+                            ) : (
+                                <div className={clsx(styles.btnMore)}>
+                                    <FontAwesomeIcon icon={faEllipsisVertical} />
+                                </div>
+                            )}
+                        </MoreMenu>
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
+            {openAuth && <Auth />}
+        </>
     );
 }
 

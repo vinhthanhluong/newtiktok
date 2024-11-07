@@ -12,6 +12,7 @@ export function AuthProvider({ children }) {
     const [userGoogle, setUserGoogle] = useState(null);
     const [loginTab, setLoginTab] = useState('default');
     const [backAuth, setBackAuth] = useState(true);
+    const [openAuth, setOpenAuth] = useState(false);
 
     const userAuthDefault = JSON.parse(localStorage.getItem('token')) ?? '';
     const userToken = JSON.parse(localStorage.getItem('user-id')) ?? '';
@@ -25,6 +26,8 @@ export function AuthProvider({ children }) {
         setLoginTab,
         backAuth,
         setBackAuth,
+        openAuth,
+        setOpenAuth,
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

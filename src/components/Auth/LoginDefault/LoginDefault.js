@@ -34,15 +34,14 @@ function LoginDefault() {
         localStorage.setItem('user-id', JSON.stringify(result.data));
         localStorage.setItem('token', JSON.stringify(`Bearer ${result.meta.token}`));
 
+        navigate('/');
         setTimeout(() => {
             window.location.reload();
         }, 300);
-
-        navigate('/');
     };
 
     return (
-        <div className={clsx(styles.wrapper)}>
+        <>
             <p className={clsx(styles.title)}>Log in</p>
             <form action="/" method="POST">
                 <div className={clsx(styles.formAuth)}>
@@ -74,7 +73,7 @@ function LoginDefault() {
                     </Button>
                 </div>
             </form>
-        </div>
+        </>
     );
 }
 

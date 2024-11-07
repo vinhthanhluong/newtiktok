@@ -17,8 +17,7 @@ function Sidebar() {
     // const CurrentUser = !!userGoogle;
 
     // User Width Default
-    const { userAuthDefault } = UserAuth();
-    const CurrentUser = !!userAuthDefault;
+    const { userAuthDefault, userToken, openAuth, setOpenAuth } = UserAuth();
 
     //Get suggestions
     const [suggestedUsers, setSuggestedUsers] = useState([]);
@@ -31,6 +30,10 @@ function Sidebar() {
         fetchApiSuggested();
     }, []);
 
+    const handleLogin = () => {
+        setOpenAuth(true);
+    };
+
     return (
         <div className={clsx(styles.wrapper)}>
             <MenuSidebar>
@@ -40,7 +43,7 @@ function Sidebar() {
                 <MenuSidebarItem title="Live" to={config.router.live} icon={<LiveIcon />} />
                 <MenuSidebarItem title="Profile" to={config.router.profile} icon={<UserIcon />} />
             </MenuSidebar>
-            {CurrentUser ? (
+            {userAuthDefault && userToken ? (
                 <>
                     <SuggestedAccounts label="Suggested accounts" data={suggestedUsers} />
                     <SuggestedAccounts label="Following accounts" />
@@ -49,7 +52,7 @@ function Sidebar() {
                 <>
                     <div className={clsx(styles.textMid)}>
                         <p className={clsx(styles.text)}>Log in to follow creators, like videos, and view comments.</p>
-                        <Button className={styles.bsidebar} to={config.router.login} primary outline>
+                        <Button className={styles.bsidebar} onClick={handleLogin} primary outline>
                             Log in
                         </Button>
                     </div>

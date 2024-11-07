@@ -4,7 +4,7 @@ import styles from './loginQR.module.scss';
 
 function LoginQR() {
     return (
-        <div className={clsx(styles.wrapper)}>
+        <>
             <p className={clsx(styles.title)}>Log in with QR code</p>
             <div className={clsx(styles.formQR)}>
                 <div className={clsx(styles.formQRBox)}>
@@ -15,7 +15,7 @@ function LoginQR() {
                     <p>2. Confirm login or sign up</p>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
