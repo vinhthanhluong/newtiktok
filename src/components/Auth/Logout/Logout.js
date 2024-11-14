@@ -18,12 +18,12 @@ function Logout() {
         e.preventDefault();
         const result = await authLogout.logout(userToken);
 
-        // localStorage.removeItem('token');
-        // localStorage.removeItem('user-id');
-        // navigate('/')
-        // setTimeout(() => {
-        //     window.location.reload();
-        // }, 300);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user-id');
+        navigate('/');
+        setTimeout(() => {
+            window.location.reload();
+        }, 300);
     };
 
     return (

@@ -32,7 +32,7 @@ function LoginDefault() {
         const result = await authLogin.login(valueAccount, valuePassword);
 
         localStorage.setItem('user-id', JSON.stringify(result.data));
-        localStorage.setItem('token', JSON.stringify(`Bearer ${result.meta.token}`));
+        localStorage.setItem('token', JSON.stringify(result.meta.token));
 
         navigate('/');
         setTimeout(() => {

@@ -14,8 +14,8 @@ export function AuthProvider({ children }) {
     const [backAuth, setBackAuth] = useState(true);
     const [openAuth, setOpenAuth] = useState(false);
 
-    const userAuthDefault = JSON.parse(localStorage.getItem('token')) ?? '';
-    const userToken = JSON.parse(localStorage.getItem('user-id')) ?? '';
+    const userToken = JSON.parse(localStorage.getItem('token')) ?? '';
+    const userAuthDefault = JSON.parse(localStorage.getItem('user-id')) ?? '';
 
     const value = {
         userAuthDefault,
