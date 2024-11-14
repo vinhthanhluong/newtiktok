@@ -112,7 +112,6 @@ function Header() {
                     </div>
                 </div>
             </header>
-            {openAuth && <Auth />}
         </>
     );
 }

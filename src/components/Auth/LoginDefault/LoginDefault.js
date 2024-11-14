@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import Button from '~/components/Button';
 import styles from './loginDefault.module.scss';
@@ -12,6 +14,9 @@ function LoginDefault() {
     const [valuePassword, setValuePassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [typePassword, setTypePassword] = useState('password');
+
+    const [isLoading, setIsLoading] = useState(false);
+
     const handleIconPassword = () => {
         setShowPassword(showPassword === true ? false : true);
         setTypePassword(typePassword === 'text' ? 'password' : 'text');
@@ -29,6 +34,7 @@ function LoginDefault() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         const result = await authLogin.login(valueAccount, valuePassword);
 
         localStorage.setItem('user-id', JSON.stringify(result.data));
@@ -36,6 +42,7 @@ function LoginDefault() {
 
         navigate('/');
         setTimeout(() => {
+            setIsLoading(false);
             window.location.reload();
         }, 300);
     };
@@ -69,7 +76,7 @@ function LoginDefault() {
                     </div>
                     <p className={clsx(styles.formAuthForget)}>Forgot password?</p>
                     <Button primary className={clsx(styles.formAuthBtn)} type="submit" onClick={handleLogin}>
-                        Log in
+                        {isLoading ? <FontAwesomeIcon icon={faSpinner} /> : <span>Log in</span>}
                     </Button>
                 </div>
             </form>

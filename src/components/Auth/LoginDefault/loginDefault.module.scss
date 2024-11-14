@@ -53,3 +53,9 @@
     font-weight: 500;
     color: rgba($color: #161823, $alpha: 0.75);
 }
+
+.formAuthBtn {
+    svg {
+        animation: var(--animation-loading);
+    }
+}

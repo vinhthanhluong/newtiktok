@@ -51,15 +51,6 @@
     }
 }
 
-@keyframes loading {
-    0% {
-        transform: rotate(0);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
 .loading {
     position: absolute;
     right: 53px;
@@ -70,7 +61,7 @@
     justify-content: center;
     width: 40px;
     font-size: 100%;
-    animation: loading 1.6s linear infinite;
+    animation: var(--animation-loading);
 }
 .btn {
     position: absolute;
