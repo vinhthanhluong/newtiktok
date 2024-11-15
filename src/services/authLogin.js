@@ -8,6 +8,6 @@ export const login = async (email, password) => {
         });
         return res.data;
     } catch (error) {
-        console.log(error);
+        return { errorCode: error.response.status };
     }
 };

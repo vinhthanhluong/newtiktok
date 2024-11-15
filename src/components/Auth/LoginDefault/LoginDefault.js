@@ -8,18 +8,18 @@ import Button from '~/components/Button';
 import styles from './loginDefault.module.scss';
 import { EyeCloseIcon, EyeOpenIcon } from '~/assets/icon';
 import * as authLogin from '~/services/authLogin';
+import { UserNotify } from '~/components/Stone';
 
 function LoginDefault() {
     const [valueAccount, setValueAccount] = useState('');
     const [valuePassword, setValuePassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const [typePassword, setTypePassword] = useState('password');
 
     const [isLoading, setIsLoading] = useState(false);
+    const { setInfoNotify } = UserNotify();
 
     const handleIconPassword = () => {
-        setShowPassword(showPassword === true ? false : true);
-        setTypePassword(typePassword === 'text' ? 'password' : 'text');
+        setShowPassword(!showPassword);
     };
 
     // if (!valueAccount.startsWith(' ')) {
@@ -36,15 +36,38 @@ function LoginDefault() {
         e.preventDefault();
         setIsLoading(true);
         const result = await authLogin.login(valueAccount, valuePassword);
+        console.log(result.errorCode);
+        if (result.errCode) {
+            setInfoNotify({
+                content: 'Login failed. Try again later',
+                error: true,
+                delay: 2000,
+                isNotify: true,
+            });
 
-        localStorage.setItem('user-id', JSON.stringify(result.data));
-        localStorage.setItem('token', JSON.stringify(result.meta.token));
+            console.log('error');
 
-        navigate('/');
-        setTimeout(() => {
-            setIsLoading(false);
-            window.location.reload();
-        }, 300);
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 300);
+        } else {
+            setInfoNotify({
+                content: 'Login Success',
+                success: true,
+                delay: 2000,
+                isNotify: true,
+            });
+
+            console.log('success');
+
+            localStorage.setItem('user-id', JSON.stringify(result.data));
+            localStorage.setItem('token', JSON.stringify(result.meta.token));
+            navigate('/');
+            setTimeout(() => {
+                setIsLoading(false);
+                window.location.reload();
+            }, 300);
+        }
     };
 
     return (
@@ -64,7 +87,7 @@ function LoginDefault() {
                     </div>
                     <div className={clsx(styles.formAuthRow)}>
                         <input
-                            type={typePassword}
+                            type={showPassword ? 'text' : 'password'}
                             className={clsx(styles.formAuthInput)}
                             placeholder="Password"
                             value={valuePassword}

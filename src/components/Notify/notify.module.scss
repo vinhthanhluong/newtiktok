@@ -7,9 +7,19 @@
     max-width: 100%;
     width: 300px;
     height: 50px;
-    background-color: #f77c7c;
+    background-color: #999;
     color: #fff;
     z-index: 99;
+    transition: all 0.3s linear;
+    &.hidden {
+        opacity: 0;
+    }
+    &.success {
+        background-color: #11da3d;
+    }
+    &.error {
+        background-color: #f22222;
+    }
 }
 
 .title {
