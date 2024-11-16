@@ -13,6 +13,6 @@ export const logout = async (token) => {
         );
         return res;
     } catch (error) {
-        console.log(error);
+        return { errorCode: error.response.status };
     }
 };

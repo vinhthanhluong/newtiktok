@@ -22,13 +22,17 @@ function LoginDefault() {
         setShowPassword(!showPassword);
     };
 
-    // if (!valueAccount.startsWith(' ')) {
-    //     setValueAccount(valueAccount);
-    // }
+    const handleChangeAccount = (e) => {
+        // Remove space '' at head
+        const trimmedValue = e.target.value.trimStart();
+        setValueAccount(trimmedValue);
+    };
 
-    // if (!valuePassword.startsWith(' ')) {
-    //     setValuePassword(valuePassword);
-    // }
+    const handleChangePassword = (e) => {
+        // Remove space '' at head
+        const trimmedValue = e.target.value.trimStart();
+        setValuePassword(trimmedValue);
+    };
 
     const navigate = useNavigate();
 
@@ -37,15 +41,13 @@ function LoginDefault() {
         setIsLoading(true);
         const result = await authLogin.login(valueAccount, valuePassword);
         console.log(result.errorCode);
-        if (result.errCode) {
+        if (result.errorCode) {
             setInfoNotify({
                 content: 'Login failed. Try again later',
                 error: true,
                 delay: 2000,
                 isNotify: true,
             });
-
-            console.log('error');
 
             setTimeout(() => {
                 setIsLoading(false);
@@ -57,8 +59,6 @@ function LoginDefault() {
                 delay: 2000,
                 isNotify: true,
             });
-
-            console.log('success');
 
             localStorage.setItem('user-id', JSON.stringify(result.data));
             localStorage.setItem('token', JSON.stringify(result.meta.token));
@@ -78,11 +78,11 @@ function LoginDefault() {
                     <p className={clsx(styles.formAuthLabel)}>Email or username</p>
                     <div className={clsx(styles.formAuthRow)}>
                         <input
-                            type="email"
+                            type="text"
                             className={clsx(styles.formAuthInput)}
                             placeholder="Email"
                             value={valueAccount}
-                            onChange={(e) => setValueAccount(e.target.value)}
+                            onChange={handleChangeAccount}
                         />
                     </div>
                     <div className={clsx(styles.formAuthRow)}>
@@ -91,7 +91,7 @@ function LoginDefault() {
                             className={clsx(styles.formAuthInput)}
                             placeholder="Password"
                             value={valuePassword}
-                            onChange={(e) => setValuePassword(e.target.value)}
+                            onChange={handleChangePassword}
                         />
                         <p className={clsx(styles.formAuthIcon)} onClick={handleIconPassword}>
                             {showPassword ? <EyeOpenIcon /> : <EyeCloseIcon />}

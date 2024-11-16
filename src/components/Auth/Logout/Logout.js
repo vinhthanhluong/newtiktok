@@ -5,10 +5,12 @@ import styles from './logout.module.scss';
 import Button from '~/components/Button';
 import { UserAuth } from '~/components/Stone';
 import * as authLogout from '~/services/authLogout';
+import { UserNotify } from '~/components/Stone';
 
 function Logout() {
     const { setOpenAuth, userToken } = UserAuth();
     const navigate = useNavigate();
+    const { setInfoNotify } = UserNotify();
 
     const handleOpen = () => {
         setOpenAuth(false);
@@ -17,13 +19,30 @@ function Logout() {
     const handleLogout = async (e) => {
         e.preventDefault();
         const result = await authLogout.logout(userToken);
-
-        localStorage.removeItem('token');
-        localStorage.removeItem('user-id');
-        navigate('/');
-        setTimeout(() => {
-            window.location.reload();
-        }, 300);
+        if (result.errorCode) {
+            setInfoNotify({
+                content: 'Logout failed. Try again later',
+                error: true,
+                delay: 2000,
+                isNotify: true,
+            });
+            setTimeout(() => {
+                window.location.reload();
+            }, 300);
+        } else {
+            setInfoNotify({
+                content: 'Logout Success',
+                success: true,
+                delay: 2000,
+                isNotify: true,
+            });
+            localStorage.removeItem('token');
+            localStorage.removeItem('user-id');
+            navigate('/');
+            setTimeout(() => {
+                window.location.reload();
+            }, 300);
+        }
     };
 
     return (
