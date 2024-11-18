@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import clsx from 'clsx';
 
 import styles from './Sidebar.module.scss';
@@ -17,7 +17,7 @@ function Sidebar() {
     // const CurrentUser = !!userGoogle;
 
     // User Width Default
-    const { userAuthDefault, userToken, openAuth, setOpenAuth } = UserAuth();
+    const { userAuthDefault, userToken, setOpenAuth } = UserAuth();
 
     //Get suggestions
     const [suggestedUsers, setSuggestedUsers] = useState([]);

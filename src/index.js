@@ -13,7 +13,7 @@ root.render(
     <GoogleOAuthProvider clientId="268930622553-1jgto3qi5o8k8cntoq7jcrad48ulgimm.apps.googleusercontent.com">
         <NotifyProvider>
             <AuthProvider>
-                <App />,
+                <App />
             </AuthProvider>
         </NotifyProvider>
     </GoogleOAuthProvider>,

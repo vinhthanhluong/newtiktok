@@ -1,0 +1,91 @@
+.wrapper {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.btn {
+    width: auto;
+    border: 1px solid rgba($color: #161823, $alpha: 0.12);
+    border-radius: 100px;
+    width: 90px;
+    min-height: 34px;
+    padding: 0;
+    color: rgba($color: #161823, $alpha: 0.75);
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+        border-color: #ccc;
+    }
+}
+.getapp {
+    width: 100%;
+}
+.getappBox {
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba($color: #000, $alpha: 0.1);
+    border-radius: 10px;
+    padding: 12px 60px 12px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    .getappClose {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 20px;
+        cursor: pointer;
+        line-height: 1;
+        height: 20px;
+    }
+
+    .getappText {
+        width: fit-content;
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+        cursor: pointer;
+        &:hover {
+            p {
+                color: var(--primary);
+            }
+        }
+        &:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        svg {
+            font-size: 20px;
+        }
+
+        p {
+            font-weight: 700;
+            font-size: 16px;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+    }
+}
+
+.toTop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: var(--primary);
+    color: #fff;
+    border-radius: 100%;
+    cursor: pointer;
+}

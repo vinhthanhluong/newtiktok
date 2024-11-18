@@ -14,7 +14,6 @@ import MoreMenu from '~/layouts/components/MoreMenu';
 import Image from '~/components/Image';
 import { UploadIcon, MessageIcon, InboxIcon, Logo } from '~/assets/icon';
 import { UserAuth } from '~/components/Stone';
-import Auth from '~/components/Auth';
 
 function Header() {
     // UserGoogle
@@ -22,7 +21,7 @@ function Header() {
     // const CurrentUser = !!userGoogle;
 
     // User Width Default
-    const { userAuthDefault, userToken, openAuth, setOpenAuth, setLoginTab } = UserAuth();
+    const { userAuthDefault, userToken, setOpenAuth, setLoginTab } = UserAuth();
 
     // Set active MoreMenu item
     const [activeMenu, setActiveMenu] = useState('light');

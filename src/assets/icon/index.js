@@ -408,3 +408,51 @@ export const CloseIcon = ({ width = '1em', height = '1em', className }) => (
         ></path>
     </svg>
 );
+
+export const ComputerIcon = ({ width = '1em', height = '1em', className }) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={width}
+        height={height}
+        className={className}
+        data-e2e=""
+        viewBox="0 0 21 19"
+        fill="currentColor"
+    >
+        <path
+            fill="currentColor"
+            d="M12.601 17h2.52a.84.84 0 1 1 0 1.68h-9.24a.84.84 0 1 1 0-1.68h2.1v-2.1h-6.3A1.682 1.682 0 0 1 0 13.22V1.88C0 .952.754.199 1.68.199h17.642c.927 0 1.68.753 1.68 1.68V13.22c0 .927-.753 1.68-1.68 1.68h-6.72V17zm-.84 0v-2.1h-2.94V17h2.94zM1.681 1.88v11.34h17.641V1.88H1.68z"
+        ></path>
+    </svg>
+);
+
+export const PCIcon = ({ width = '1em', height = '1em', className }) => (
+    <svg
+        width={width}
+        height={height}
+        className={className}
+        data-e2e=""
+        viewBox="0 0 48 48"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M8 7C8 4.23858 10.2386 2 13 2H35C37.7614 2 40 4.23858 40 7V41C40 43.7614 37.7614 46 35 46H13C10.2386 46 8 43.7614 8 41V7ZM13 6C12.4477 6 12 6.44772 12 7V41C12 41.5523 12.4477 42 13 42H35C35.5523 42 36 41.5523 36 41V7C36 6.44772 35.5523 6 35 6H13ZM18 10C18 9.44772 18.4477 9 19 9H29C29.5523 9 30 9.44772 30 10V12C30 12.5523 29.5523 13 29 13H19C18.4477 13 18 12.5523 18 12V10ZM24 39C25.6569 39 27 37.6569 27 36C27 34.3431 25.6569 33 24 33C22.3431 33 21 34.3431 21 36C21 37.6569 22.3431 39 24 39Z"
+        ></path>
+    </svg>
+);
+
+export const ToTopIcon = ({ width = '1em', height = '1em', className }) => (
+    <svg
+        width={width}
+        height={height}
+        className={className}
+        fill="currentColor"
+        viewBox="0 0 48 48"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path d="M39.41 19.59a1 1 0 0 0 0-1.42L26.12 4.87a3 3 0 0 0-4.24 0l-13.3 13.3a1 1 0 0 0 0 1.42l2.81 2.8a1 1 0 0 0 1.44-.02L21 13.75V34a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V13.74l8.17 8.64a1 1 0 0 0 1.44.01l2.8-2.8ZM8 38a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h32a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H8Z"></path>
+    </svg>
+);
