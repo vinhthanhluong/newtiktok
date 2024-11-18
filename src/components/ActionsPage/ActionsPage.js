@@ -11,10 +11,14 @@ function ActionsPage({ totop }) {
 
     const handleClose = () => setShowBox(false);
 
+    const handleToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
         <div className={clsx(styles.wrapper)}>
             {totop ? (
-                <p className={clsx(styles.toTop)}>
+                <p className={clsx(styles.toTop)} onClick={handleToTop}>
                     <ToTopIcon />
                 </p>
             ) : (

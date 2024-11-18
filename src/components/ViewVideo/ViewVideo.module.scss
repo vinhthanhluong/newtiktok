@@ -1,0 +1,16 @@
+.wrapper {
+    height: 100%;
+}
+
+.item {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-right: 300px;
+    margin-bottom: 50px;
+    width: 100%;
+    height: calc(-92px + 100vh);
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
