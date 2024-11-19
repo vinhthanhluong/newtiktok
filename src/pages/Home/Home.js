@@ -1,13 +1,11 @@
-import clsx from 'clsx';
-
-import styles from './home.module.scss';
 import ActionsPage from '~/components/ActionsPage';
 import ViewVideo from '~/components/ViewVideo';
 
 function Home() {
+    const TYPE_CATEGORY = 'for-you';
     return (
         <>
-            <ViewVideo />
+            <ViewVideo type={TYPE_CATEGORY} />
             <ActionsPage />
         </>
     );
