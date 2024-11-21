@@ -1,3 +1,4 @@
+import LazyLoad from 'react-lazyload';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,7 +10,9 @@ import Image from '~/components/Image';
 function AccountSearch({ data }) {
     return (
         <Link to={`/@${data.nickname}`} className={clsx(styles.wrapper)}>
-            <Image src={data.avatar} alt={data.full_name} className={clsx(styles.avatar)} />
+            <LazyLoad height="100%">
+                <Image src={data.avatar} alt={data.full_name} className={clsx(styles.avatar)} />
+            </LazyLoad>
             <div className={clsx(styles.info)}>
                 <div className={clsx(styles.username)}>
                     {data.nickname}

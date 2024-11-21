@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import styles from './ViewVideo.module.scss';
@@ -18,13 +19,17 @@ function ViewVideo({ type = '' }) {
         fetchApi();
     }, [type]);
 
+    if (dataVideo.length === 0) {
+        return;
+    }
+
     return (
         <div className={clsx(styles.wrapper)}>
             {dataVideo.map((item, index) => {
                 return (
                     <div className={clsx(styles.item)} key={index}>
-                        <Video data={item} />
-                        <VideoAction data={item} />
+                        <Video data={item} index={index} />
+                        <VideoAction data={item} index={index} />
                     </div>
                 );
             })}
@@ -33,3 +38,7 @@ function ViewVideo({ type = '' }) {
 }
 
 export default ViewVideo;
+
+ViewVideo.propTypes = {
+    type: PropTypes.string,
+};

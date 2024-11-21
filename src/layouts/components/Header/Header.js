@@ -1,3 +1,4 @@
+import LazyLoad from 'react-lazyload';
 import clsx from 'clsx';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -100,7 +101,9 @@ function Header() {
                         >
                             {userAuthDefault && userToken ? (
                                 <div className={clsx(styles.userAvatar)}>
-                                    <Image src={userAuthDefault.avatar} alt={userAuthDefault.nickname} />
+                                    <LazyLoad height="100%">
+                                        <Image src={userAuthDefault.avatar} alt={userAuthDefault.nickname} />
+                                    </LazyLoad>
                                 </div>
                             ) : (
                                 <div className={clsx(styles.btnMore)}>

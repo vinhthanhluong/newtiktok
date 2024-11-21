@@ -1,3 +1,4 @@
+import LazyLoad from 'react-lazyload';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,7 +20,9 @@ function AccountItem({ data }) {
                     <div className={clsx(styles.accPopupContent)}>
                         <div className={clsx(styles.accPopupHead)}>
                             <p className={clsx(styles.accPopupImg)}>
-                                <Image src={data.avatar} alt={data.nickname} />
+                                <LazyLoad height="100%">
+                                    <Image src={data.avatar} alt={data.nickname} />
+                                </LazyLoad>
                             </p>
                             <Button primary to={config.router.following} className={clsx(styles.accPopupBtn)}>
                                 Follow
@@ -57,7 +60,9 @@ function AccountItem({ data }) {
             >
                 <div className={clsx(styles.accountItem)}>
                     <p className={clsx(styles.accountImg)}>
-                        <Image src={data.avatar} alt={data.nickname} />
+                        <LazyLoad height="100%">
+                            <Image src={data.avatar} alt={data.nickname} />
+                        </LazyLoad>
                     </p>
                     <div className={clsx(styles.accountTxt)}>
                         <p className={clsx(styles.accountNickname)}>

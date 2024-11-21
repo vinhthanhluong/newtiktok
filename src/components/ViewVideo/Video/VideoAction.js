@@ -1,3 +1,5 @@
+import LazyLoad from 'react-lazyload';
+import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,16 +9,20 @@ import Button from '~/components/Button';
 import Image from '~/components/Image';
 import styles from './Video.module.scss';
 
-function VideoAction({ data = {} }) {
+function VideoAction({ data = {}, index }) {
     return (
         <div className={clsx(styles.videoAction)}>
             <div className={clsx(styles.avatar)}>
-                <p className={clsx(styles.avatarImg)}>
-                    <Image src="" />
-                    <span className={clsx(styles.avatarIcon)}>
-                        <FontAwesomeIcon icon={faPlus} />
-                    </span>
-                </p>
+                <div className={clsx(styles.avatarImg)}>
+                    <Link to={`/@${data.user.nickname}`}>
+                        <LazyLoad height="100%">
+                            <Image src={data.user.avatar} alt={data?.user.nickname} />
+                        </LazyLoad>
+                        <span className={clsx(styles.avatarIcon)}>
+                            <FontAwesomeIcon icon={faPlus} />
+                        </span>
+                    </Link>
+                </div>
             </div>
             <Button className={clsx(styles.btn)}>
                 <span className={clsx(styles.btnIcon)}>
@@ -50,4 +56,5 @@ export default VideoAction;
 
 VideoAction.propTypes = {
     data: PropTypes.object.isRequired,
+    index: PropTypes.number,
 };
