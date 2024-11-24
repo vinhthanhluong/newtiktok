@@ -5,17 +5,19 @@ import reportWebVitals from './reportWebVitals';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import '~/global.scss';
-import { AuthProvider, NotifyProvider } from '~/components/Stone';
+import { AuthProvider, NotifyProvider, VideoProvider } from '~/components/Stone';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     // <React.StrictMode>
     <GoogleOAuthProvider clientId="268930622553-1jgto3qi5o8k8cntoq7jcrad48ulgimm.apps.googleusercontent.com">
-        <NotifyProvider>
-            <AuthProvider>
-                <App />
-            </AuthProvider>
-        </NotifyProvider>
+        <AuthProvider>
+            <VideoProvider>
+                <NotifyProvider>
+                    <App />
+                </NotifyProvider>
+            </VideoProvider>
+        </AuthProvider>
     </GoogleOAuthProvider>,
     // </React.StrictMode>,
 );

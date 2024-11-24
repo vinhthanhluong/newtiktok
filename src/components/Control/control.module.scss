@@ -1,0 +1,23 @@
+.wrapVolume {
+    position: relative;
+}
+.btnVolume {
+    position: relative;
+    text-align: center;
+    line-height: 1;
+    padding-top: 5px;
+}
+
+.progressVolume {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    left: 0;
+    padding-top: 5px;
+    background: rgba($color: #000, $alpha: 0.4);
+    margin: 0 auto;
+    width: fit-content;
+    padding: 17px 10px 7px;
+    border-radius: 100px;
+    cursor: pointer;
+}

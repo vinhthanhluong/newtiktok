@@ -1,7 +1,9 @@
 .wrapper {
-    width: 240px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: var(--wSidebar);
     padding: 15px;
-    margin-right: 100px;
 }
 
 .text {
