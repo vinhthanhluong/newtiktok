@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import Slider from 'rc-slider';
 
 import { VolumeIcon, VolumeMuteIcon } from '~/assets/icon';
 import styles from './control.module.scss';
-import InputSlider from '~/components/InputSlider';
 
 function VolumeVideo({
     openMuted = false,
@@ -26,15 +26,29 @@ function VolumeVideo({
 
             {openMuted && (
                 <div className={clsx(styles.progressVolume)}>
-                    <InputSlider
-                        widthY="3px"
-                        heightY="60px"
+                    <Slider
                         min={MIN_VALUE}
                         max={MAX_VALUE}
-                        step={STEP}
                         value={valueVolume}
+                        step={STEP}
+                        vertical
                         onChange={onChangeVolume}
-                        isVertical
+                        handleStyle={{
+                            backgroundColor: '#fff',
+                            borderColor: '#fff',
+                            opacity: 1,
+                            boxShadow: 'none',
+                            width: '13px',
+                            height: '13px',
+                        }}
+                        trackStyle={{
+                            backgroundColor: '#fff',
+                            width: '3px',
+                        }}
+                        railStyle={{
+                            backgroundColor: '#c4c4c4',
+                            width: '3px',
+                        }}
                     />
                 </div>
             )}
