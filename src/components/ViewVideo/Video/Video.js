@@ -5,15 +5,17 @@ import Slider from 'rc-slider';
 
 import { PlayVideo, VolumeVideo } from '~/components/Control';
 import { UserVideo } from '~/components/Stone';
+import { useVideoTime } from '~/hook/';
 import styles from './Video.module.scss';
+import { video } from '~/services/listVideoService';
 
 function Video({ data = {}, index }) {
     const DEFAULT_VOLUME = 1; // 100%
     const MUTE_VOLUME = 0;
 
     const MIN_VIDEO = 0;
-    const MAX_VIDEO = 100;
-    const STEP_VIDEO = 10;
+    const MAX_VIDEO = Math.floor(data?.meta?.playtime_seconds);
+    const STEP_VIDEO = 1;
 
     const videoRef = useRef(null);
     const { isMuted, setIsMuted, volume, setVolume, volumeCurrent, setVolumeCurrent } = UserVideo();
@@ -21,10 +23,28 @@ function Video({ data = {}, index }) {
     const [playVideo, setPlayVideo] = useState(false);
     const [openMuted, setOpenMuted] = useState(false);
 
+    const [timeVideo, setTimeVideo] = useState(MIN_VIDEO);
+    const durationTime = useVideoTime(data?.meta?.playtime_seconds);
+    const currentTime = useVideoTime(timeVideo);
+
     //Handle event Play && Pause Video
     const handlePlay = () => {
-        setPlayVideo(!playVideo);
-        !playVideo ? videoRef.current.play() : videoRef.current.pause();
+        // setPlayVideo(!playVideo);
+        // !playVideo ? videoRef.current.play() : videoRef.current.pause();
+
+        if (!videoRef.current) return;
+
+        if (playVideo && !videoRef.current.paused) {
+            videoRef.current.pause();
+            setPlayVideo(false);
+        } else if (videoRef.current.paused) {
+            videoRef.current
+                .play()
+                .then(() => setPlayVideo(true))
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
     };
 
     //Handle event change volume video
@@ -67,18 +87,42 @@ function Video({ data = {}, index }) {
         setOpenMuted(false);
     };
 
-    // Get Time video
-    function formatTime(time) {
-        const SecondVideo = Math.floor(time);
-        const MinuteVideo = Math.floor(SecondVideo / 60);
+    // Handle event change video time
+    const onChangeVideo = (value) => {
+        setTimeVideo(value);
+        videoRef.current.currentTime = value;
+    };
 
-        const minutes = MinuteVideo <= 9 ? `0${MinuteVideo}` : MinuteVideo;
-        const secondCount = SecondVideo - minutes * 60;
-        const second = secondCount <= 9 ? `0${secondCount}` : secondCount;
-        const total = `${minutes}:${second}`;
+    // Handle event timeupdate video time
+    useEffect(() => {
+        const handleUpdateTime = () => {
+            if (videoRef.current) {
+                setTimeVideo(videoRef.current.currentTime);
+            }
+        };
+        if (videoRef.current && videoRef.current.paused) {
+            videoRef.current.addEventListener('timeupdate', handleUpdateTime);
+        }
 
-        return total;
-    }
+        const handleEndVideo = () => {
+            if (videoRef.current) {
+                setPlayVideo(false);
+            }
+        };
+
+        if (videoRef.current) {
+            videoRef.current.addEventListener('ended', handleEndVideo);
+        }
+
+        return () => {
+            if (videoRef.current) {
+                videoRef.current.removeEventListener('timeupdate', handleUpdateTime);
+                videoRef.current.pause();
+
+                videoRef.current.removeEventListener('ended', handleEndVideo);
+            }
+        };
+    }, [videoRef.current]);
 
     return (
         <div className={clsx(styles.videoBox)}>
@@ -104,9 +148,9 @@ function Video({ data = {}, index }) {
                     <Slider
                         min={MIN_VIDEO}
                         max={MAX_VIDEO}
-                        value={10}
+                        value={timeVideo}
                         step={STEP_VIDEO}
-                        // onChange={onChangeVolume}
+                        onChange={onChangeVideo}
                         handleStyle={{
                             backgroundColor: '#fff',
                             borderColor: '#fff',
@@ -117,14 +161,14 @@ function Video({ data = {}, index }) {
                         }}
                         trackStyle={{
                             backgroundColor: '#fff',
-                            // width: '3px',
                         }}
                         railStyle={{
                             backgroundColor: '#c4c4c4',
-                            // width: '3px',
                         }}
                     />
-                    <span className={clsx(styles.controlTime)}>{/* {currentVideo} / {totalVideo} */}</span>
+                    <span className={clsx(styles.controlTime)}>
+                        {currentTime.minutes} : {currentTime.seconds} / {durationTime.minutes} : {durationTime.seconds}
+                    </span>
                 </div>
             </div>
         </div>
