@@ -13,6 +13,7 @@ export function AuthProvider({ children }) {
     const [loginTab, setLoginTab] = useState('default');
     const [backAuth, setBackAuth] = useState(true);
     const [openAuth, setOpenAuth] = useState(false);
+    const [openFullScreen, setOpenFullScreen] = useState(false);
 
     const userToken = JSON.parse(localStorage.getItem('token')) ?? '';
     const userAuthDefault = JSON.parse(localStorage.getItem('user-id')) ?? '';
@@ -28,6 +29,8 @@ export function AuthProvider({ children }) {
         setBackAuth,
         openAuth,
         setOpenAuth,
+        openFullScreen,
+        setOpenFullScreen,
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

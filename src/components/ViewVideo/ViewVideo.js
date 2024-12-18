@@ -56,7 +56,6 @@ function ViewVideo({ type = '' }) {
         return () => window.removeEventListener('scroll', handleLoadMore);
     }, [handleLoadMore]);
 
-
     if (listVideoUser.length === 0 && !isLoading) {
         return <div className={clsx(styles.wrapper)}>No videos available.</div>;
     }

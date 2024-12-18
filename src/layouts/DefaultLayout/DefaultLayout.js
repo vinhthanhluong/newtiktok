@@ -7,9 +7,10 @@ import Sidebar from '~/layouts/components/Sidebar';
 import Auth from '~/components/Auth';
 import { UserAuth } from '~/components/Stone';
 import Notify from '~/components/Notify';
+import FullScreen from '~/layouts/FullScreen';
 
 function DefaultLayout({ children }) {
-    const { openAuth } = UserAuth();
+    const { openAuth, openFullScreen } = UserAuth();
     return (
         <div className={clsx(styles.wrapper)}>
             <Header />
@@ -19,6 +20,7 @@ function DefaultLayout({ children }) {
             </main>
 
             {openAuth && <Auth />}
+            {openFullScreen && <FullScreen />}
             <Notify />
         </div>
     );

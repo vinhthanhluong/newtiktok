@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import Slider from 'rc-slider';
 
 import { PlayVideo, VolumeVideo } from '~/components/Control';
-import { UserVideo } from '~/components/Stone';
+import { UserVideo, UserAuth } from '~/components/Stone';
 import { useVideoTime } from '~/hook/';
 import styles from './Video.module.scss';
 import { video } from '~/services/listVideoService';
@@ -18,7 +18,9 @@ function Video({ data = {}, index }) {
     const STEP_VIDEO = 1;
 
     const videoRef = useRef(null);
-    const { isMuted, setIsMuted, volume, setVolume, volumeCurrent, setVolumeCurrent } = UserVideo();
+    const { isMuted, setIsMuted, volume, setVolume, volumeCurrent, setVolumeCurrent, setIdVideo, setPositionVideo } =
+        UserVideo();
+    const { setOpenFullScreen } = UserAuth();
 
     const [playVideo, setPlayVideo] = useState(false);
     const [openMuted, setOpenMuted] = useState(false);
@@ -29,9 +31,6 @@ function Video({ data = {}, index }) {
 
     //Handle event Play && Pause Video
     const handlePlay = () => {
-        // setPlayVideo(!playVideo);
-        // !playVideo ? videoRef.current.play() : videoRef.current.pause();
-
         if (!videoRef.current) return;
 
         if (playVideo && !videoRef.current.paused) {
@@ -46,6 +45,37 @@ function Video({ data = {}, index }) {
                 });
         }
     };
+
+    //Handle Play && Paused Video when scroll
+    useEffect(() => {
+        const option = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.75,
+        };
+        const callbackPlayPause = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    //Phần tử đang trong viewport
+                    const playPromise = entry.target.play();
+
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => setPlayVideo(true)).catch((error) => {});
+                    }
+                } else {
+                    //Phần tử đã rời khỏi viewport
+                    entry.target.pause();
+                    setPlayVideo(false);
+                }
+            });
+        };
+        const observer = new IntersectionObserver(callbackPlayPause, option);
+        observer.observe(videoRef.current);
+
+        return () => {
+            observer.unobserve(videoRef.current);
+        };
+    }, [videoRef.current]);
 
     //Handle event change volume video
     const handleChangeVolume = (value) => {
@@ -124,9 +154,15 @@ function Video({ data = {}, index }) {
         };
     }, [videoRef.current]);
 
+    const handleGetIdVideo = () => {
+        setIdVideo(data.id);
+        setPositionVideo(index);
+        setOpenFullScreen(true);
+    };
+
     return (
         <div className={clsx(styles.videoBox)}>
-            <video ref={videoRef} poster={data.thumb_url}>
+            <video ref={videoRef} poster={data.thumb_url} onClick={handleGetIdVideo}>
                 <source src={data.file_url} type="video/mp4" preload="auto" loop />
             </video>
             <div className={clsx(styles.control)}>

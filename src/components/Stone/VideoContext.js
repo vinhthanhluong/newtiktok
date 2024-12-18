@@ -24,6 +24,9 @@ export function VideoProvider({ children }) {
     const [volume, setVolume] = useState(getInitialVolume());
     const [volumeCurrent, setVolumeCurrent] = useState(volume);
 
+    const [idVideo, setIdVideo] = useState();
+    const [positionVideo, setPositionVideo] = useState(null);
+
     useEffect(() => {
         localStorage.setItem(
             'volumeLocal',
@@ -38,6 +41,10 @@ export function VideoProvider({ children }) {
         setVolume,
         volumeCurrent,
         setVolumeCurrent,
+        idVideo,
+        setIdVideo,
+        positionVideo,
+        setPositionVideo,
     };
     return <VideoContext.Provider value={value}>{children}</VideoContext.Provider>;
 }

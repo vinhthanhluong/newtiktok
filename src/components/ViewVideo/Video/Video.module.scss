@@ -94,6 +94,7 @@
         top: 6px;
         left: 20px;
         font-size: 20px;
+        z-index: 2;
     }
     .controlVolume {
         position: absolute;
@@ -102,10 +103,14 @@
         font-size: 25px;
     }
     .controlInput {
+        display: flex;
+        align-items: center;
     }
     .controlSlider {
     }
     .controlTime {
         font-size: 14px;
+        flex-shrink: 0;
+        margin-left: 15px;
     }
 }
